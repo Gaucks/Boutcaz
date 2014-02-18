@@ -1,0 +1,23 @@
+boutique_homepage:
+    pattern:  /
+    defaults: { _controller: BoutiqueBundle:Boutique:index }
+
+region_homepage:
+    pattern:  /region/{slug}
+    defaults: { _controller: BoutiqueBundle:Boutique:region }  
+
+show_homepage:
+    pattern:  /show
+    defaults: { _controller: BoutiqueBundle:Boutique:show }
+
+signup_homepage:
+    pattern:  /signup
+    defaults: { _controller: BoutiqueBundle:Boutique:signup }
+
+signin_homepage:
+    pattern:  /signin
+    defaults: { _controller: BoutiqueBundle:Boutique:signin }
+
+deposer_homepage:
+    pattern:  /deposer
+    defaults: { _controller: BoutiqueBundle:Boutique:deposer }

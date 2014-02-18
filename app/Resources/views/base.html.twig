@@ -1,0 +1,121 @@
+  <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Boutcaz Website{% endblock %}</title>
+        {% stylesheets filter='cssrewrite'
+	        		'bundles/Boutique/css/reset.css'
+	        		'bundles/Boutique/css/base.css'
+	        		'bundles/Boutique/css/accueil.css'
+	        		'bundles/Boutique/css/region.css'
+	        		'bundles/Boutique/css/annonce.css'
+	        		'bundles/Boutique/css/signup.css'
+	        		'bundles/Boutique/css/deposer.css'
+	        		
+	         %}
+				<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	  	    {% endstylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    
+{# Le header #}    
+
+    	<div id="header">
+    		<div id="header_box">
+    			<div id="site_title">
+    				<a href="{{ path('boutique_homepage') }}" class="region_title" alt="Logo Boutcaz" >
+    					<img src="{{ asset('bundles/boutique/images/logo2.png') }}" alt="Logo Boutcaz "/>
+    					
+						{% if entete is defined == false %}
+						
+							{{ region.region }}
+						
+						{% endif %}
+					</a>
+				</div>
+    			
+    			<div id="authenticate_box">
+    				<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    				<a href="{{ path('signup_homepage')}}" alt="" class="" /> <input type="button" value="Inscription" class="signup" /></a>
+    				<a href="{{ path('signin_homepage')}}" alt="" class="" /> <input type="button" value="Connexion" class="signin" /></a>
+    			</div>
+    			<div class="clear"></div>
+    		</div>
+    	</div>
+    	
+    	
+{# Sous le header #}
+
+    	<div id="header_sub">
+    	
+	    		<div id="header_sub_box">
+	    		
+	    		{% if entete is defined  %}
+	    			
+	    			
+	    		{% else %}
+	    		
+	    		    <h1 id="entete">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	    				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+					</h1>
+					
+					<div id="header_center_search">
+						<a href="{{ path('deposer_homepage')}}" alt="" class="" /> <input type="button" value="Passer une annonce gratuite" class="mainsearch" /></a>
+					</div>
+	    		{% endif %}
+	    			
+					
+	    		</div>
+
+    	</div>
+    	
+		{% if entete is defined  %}
+	    			
+	    			
+	    {% else %}
+
+    	{# BANDEAU BLANC AVEC LA RECHERCHE #}
+    	<div id="sub_header"> 
+    	
+	    		<div id="sub_header_box">
+	    			{# PARTIE A MODELER #}
+	    			
+		    			<fieldset id="recherche">
+		    			
+		    			<label class="recherche">Recherche</label>
+		    			<input type="text" class="recherche" placeholder="Ex: Citroen C4, Smartphone etc..."/>
+		    			
+		    			<label class="recherche">Categorie</label>
+		    			<select class="recherche">
+		    				<option>Toutes les catéories</option>
+		    			</select>
+		    			
+		    			<label class="recherche">Trier par </label>
+		    			<select class="option">
+		    				<option>Date</option>
+		    				<option>Tarif</option>
+		    			</select>
+		    			<input type="submit" class="submit" value="Trouver" />
+		    			</fieldset>
+		    			
+			    </div>
+    		
+    	</div>
+    	{% endif %}
+    	
+    	
+{# Contenu du site #}  
+			
+    	<div id="content">
+        	{% block body %}{% endblock %}
+       
+        
+        {% block footer %}
+        	{{ render(controller("BoutiqueBundle:Boutique:footer")) }}
+        {% endblock footer%}
+        
+         </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

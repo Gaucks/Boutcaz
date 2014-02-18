@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Boutcaz Website{% endblock %}</title>
+        {% stylesheets filter='cssrewrite'
+	        		'bundles/Boutique/css/reset.css'
+	        		'bundles/Boutique/css/base.css'
+	        		'bundles/Boutique/css/accueil.css'
+	        		'bundles/Boutique/css/region.css'
+	         %}
+				<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	  	    {% endstylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    
+{# Le header #}    
+
+    	<div id="header">
+    		<div id="header_box">
+    			<div id="site_title">
+    				<a href="{{ path('boutique_homepage') }}" class="region_title" alt="Logo Boutcaz" >
+    					<img src="{{ asset('bundles/boutique/images/logo2.png') }}" alt="Logo Boutcaz "/>
+					</a>
+				</div>
+    			
+    			<div id="authenticate_box">
+    				<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    				<a href="{{ path('signup_homepage')}}" alt="" class="" /> <input type="button" value="Inscription" class="signup" /></a>
+    				<a href="{{ path('signin_homepage')}}" alt="" class="" /> <input type="button" value="Connexion" class="signin" /></a>
+    			</div>
+    			<div class="clear"></div>
+    		</div>
+    	</div>
+    	
+    	
+{# Sous le header #}
+
+    	<div id="header_sub">
+    		<div id="header_sub_box">
+    			{# Partie sur le coming soon #}
+    			<div id="header_sub_comingsoon">
+    				<p id="soon">
+    					" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    					 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
+    				</p>
+					<a href="{{ path('deposer_homepage')}}" alt="" class="" /> <input type="button" value="Passer une annonce gratuite" class="free_anonce" /></a>
+    			</div>
+    			
+    			{# Partie sur la recherche sur le site #}
+	    		<div id="header_sub_recherche">
+	    		
+	    			<fieldset id="recherche">
+						<form action="{{ path('boutique_homepage') }}" method="post" {{ form_enctype(recherche) }}>
+						{{ form_start(recherche) }}
+		
+	    			<p> {{ form_widget(recherche.recherche) }}</p>
+	    			
+	    			<p> {{ form_widget(recherche.categorie) }} {{ form_widget(recherche.ville) }} </p>	
+	    			
+	    			<p class="submit"> <input type="submit" class="lancer" value="Lancer la recherche" /> </p>
+	    			
+	    				{{ form_end(recherche) }}
+	    				
+	    			</fieldset>
+	    			
+	    		</div>
+	    		
+	    		<div class="clear"></div>
+    		
+    		</div>
+    	</div>
+    	
+    	<div id="sub_header"> 
+    	
+    		<div id="sub_header_box">
+    			 <ul id="sub_header_box_region">
+    			 	 {% for region in regions  %}
+    			 	 
+				 	 <li class="menu_region"><a href="{{ path('region_homepage', { 'slug': region.slug }) }}" />{{ region.region }}</a></li>
+    			 	
+    			 	{% endfor %}
+    			 </ul>
+		    </div>
+    		
+    	</div>
+{# Contenu du site #}  
+			
+    	<div id="content">
+        	{% block body %}{% endblock %}
+        </div>
+        
+        {% block footer %}
+        	{{ render(controller("BoutiqueBundle:Boutique:footer")) }}
+        {% endblock footer%}
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

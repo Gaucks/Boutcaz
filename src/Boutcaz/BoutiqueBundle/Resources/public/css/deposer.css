@@ -1,0 +1,329 @@
+#content_depose_box{
+	padding: 10px;
+	width: 1000px;
+}
+
+#depose_box{
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+#depose_box p.infos{
+	font-style: italic;
+	margin-left: 150px;
+	display: block
+}
+
+	#depose_box_left{
+		width: 650px;
+		float: left;
+		padding: 10px;
+	}
+		
+		#depose_box_left h3.annonce_etape{
+			background: #127fc2;
+			margin: 20px 20px 10px -30px;
+			text-indent: 20px;
+			padding: 2px 0;
+			width: 250px;
+			color: #FFF;
+			border-radius: 20px;	
+		}
+		
+			#dep_head{
+				padding: 10px 10px 20px 10px;
+				border-bottom: 1px solid #c5cacc;
+			}
+			
+				#dep_head label.label{
+					float:left;
+					display: block;
+					margin: 5px 0 2px 0;
+					width: 150px;
+				}
+				
+				#dep_head label.label_tarif{
+					float:left;
+					margin: 5px 0 2px 0;
+					display: block;
+					width: 150px;
+				}
+				
+				#dep_head label.infos{
+					margin-left: 5px;
+					font-style: italic;
+				}
+				
+				#dep_head input[type="text"].annonce_txt{
+					width: 400px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+				}
+				
+				#dep_head textarea{
+					width: 400px;
+					min-height: 100px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: block
+				}
+				
+				#dep_head input[type="text"].annonce_tarif{
+					width: 60px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 10px;
+				}
+				
+		#dep_main{
+			padding: 10px 10px 20px 10px;
+			border-bottom: 1px solid #c5cacc;
+		}
+				#dep_main label.label{
+					float:left;
+					margin: 5px 0 2px 0;
+					display: block;
+					width: 150px;
+				}
+				
+				#dep_main label.radio{
+					margin:0 10px 0 2px;
+				}
+				
+				#dep_main select.annonce{
+					margin-bottom: 5px;
+					width: 322px;
+					height: 30px;
+					border: 1px solid #c5cacc;
+					display: block;
+				}
+				
+				#Boutcaz_BoutiqueBundle_annonce_proposition label.required{
+					margin:0 10px 0 2px;
+				}
+				
+				#Boutcaz_BoutiqueBundle_guest_type label.required{
+					margin:0 10px 0 2px;
+				}
+				
+		#dep_coord{
+			padding: 10px 10px 20px 10px;
+			border-bottom: 1px solid #c5cacc;
+		}
+			
+			#dep_coord label.label{
+				float:left;
+				margin: 5px 0 2px 0;
+				display: block;
+				width: 150px;
+			}
+			
+			#dep_coord label.radio{
+				margin:5px 10px 0 2px;
+				display: inline-block
+			
+			}
+			
+			#dep_coord select.annonce{
+				margin-bottom: 5px;
+				width: 322px;
+				height: 30px;
+				border: 1px solid #c5cacc;
+				display: block;
+			}
+			
+			#dep_coord input[type="text"].login{
+					width: 200px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: block
+			}
+			
+		#dep_ident{
+			padding: 10px 10px 20px 10px;
+			border-bottom: 1px solid #c5cacc;
+		}
+			
+			#dep_ident label.label{
+				float:left;
+				margin: 5px 0 2px 0;
+				display: block;
+				width: 150px;
+			}
+			
+			#dep_ident input[type="text"].login{
+					width: 400px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: block
+			}
+			
+			#dep_ident input[type="email"].login{
+					width: 400px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+			}
+			
+			#dep_ident input[type="password"].login{
+					width: 240px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: block;
+			}
+			
+	#dep_picture{
+			padding: 10px 10px 20px 10px;
+			border-bottom: 1px solid #c5cacc;
+		}
+			
+			#dep_picture label.label{
+				float:left;
+				margin: 5px 0 2px 0;
+				display: block;
+				width: 150px;
+			}
+			
+			#dep_picture input[type="file"].file{
+					width: 300px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: block;
+					margin-left: 150px;
+			}
+
+#dep_submit{
+	text-align: center
+}	
+
+	#dep_submit input[type="submit"]#submit{
+			border-radius:20px;
+			background: #b1c70d;
+			border: 1px solid #ccc;
+			padding: 5px 20px;
+			color: #fff;
+			text-transform: uppercase;
+			margin-top: 6px;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+	}	
+	
+	
+	
+	
+	
+	
+	
+/* Partie de droite du site  */
+	#depose_box_right{
+		margin-top: 0px;
+		background: url('../images/bg.png');
+		float: right;
+		border-left: 1px solid #c5cacc;
+		padding: 20px 15px 20px 0;
+		border-top-right-radius: 7px;
+		border-bottom-left-radius: 7px;
+		height: auto;
+		width: 200px;
+	}
+	
+		
+		.depose_box_right_sponsor{
+			margin: 0 auto;
+			text-align: center;
+			background: #f0f0f0;
+			width: 150px;
+			padding: 7px;
+			margin-bottom: 20px;
+			border-radius: 7px;
+		}
+		
+			.depose_box_right_sponsor_box{
+				width: 150px;
+				background: #FFF;
+				border: 1px solid #c5cacc;
+				padding: 10px;
+				height: 220px;
+				border-radius: 7px;
+			}
+			
+				.depose_box_right_sponsor_box img.annonce_sponsor{
+					max-width: 150px;
+					max-height: 150px;
+				}
+				
+				.depose_box_right_sponsor_box h4.annonce_sponsor_title{
+					
+				}
+
+/* Partie pour afficher un ruban sur le titre */
+.ruban_dep {
+	background: #b1c70d;
+	width: 230px;
+	position: relative;
+	left:-15px;
+	float: left;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	z-index: 100;
+}
+ 
+.ruban_dep h2 {
+	color: #fff;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+	text-align: center;
+	margin:5px;
+}
+ 
+.ruban_dep_gauche {
+	border-color: transparent #7e9202 transparent transparent;
+	border-style:solid;
+	border-width:15px;
+	height:0px;
+	width:0px;
+	position: relative;
+	left: -30px;
+	top: 15px;
+	z-index: 1;  /*s'affichera sous le rectangle  */
+	margin-bottom: 20px;
+}
+
+
+/* Fin Partie pour afficher un ruban sur le titre */		
+		
+	
+	
+	
+	
+	
+	

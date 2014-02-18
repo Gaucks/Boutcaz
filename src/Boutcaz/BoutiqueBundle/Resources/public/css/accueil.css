@@ -1,0 +1,109 @@
+#content_box{
+	width: 100%;
+	padding: 10px;
+}
+	
+	#content_box_left{
+		float: left;
+		width: 40%;
+		height: 400px;
+		margin-left: 30px;
+	}
+	
+	#content_box_right{
+		margin-left: 50%;
+	}
+	
+		#sponsored{
+			border-right: 0;
+		}
+		
+			.sp_box{
+				background: #FFF;
+				padding: 10px;
+				border: 1px solid #ccc;
+				margin-bottom: 15px;
+				border-radius: 7px;
+				
+			}
+				.sp_box_img {
+					float: left;
+					margin-right: 20px;
+					
+				}
+				
+					.sp_box_img img{
+						margin: -15px 0 0 10px;
+					}
+			
+				.sp_box_annonce{
+					margin-left: 60px;
+				}
+				
+					.sp_box_annonce h3.title{
+					}
+					
+					.sp_box_annonce ul.sp_top_infos{
+						font-size: 0.9em;
+					}
+					
+					.sp_box_annonce li.sp_top_info{
+						display: inline-block
+					}
+					
+					.sp_box_annonce p.infos{
+						color: #999;
+						display: inline;
+					}
+					
+					.sp_box_annonce p.location{
+						color: #999;
+						margin-bottom: 20px;
+						font-size: 0.9em;
+					}
+					
+					.sp_box_annonce p.description{
+						margin-top: -10px;
+						margin-left: -50px;
+						color: #999;
+					}
+					
+					.sp_box_annonce_bottom{
+						background: #f0f0f0;
+						height: 40px;
+						margin: 10px -10px -10px -10px;	
+						border-top: 1px solid #ccc;
+						border-bottom-left-radius: 7px;
+						border-bottom-right-radius: 7px;
+					}
+					
+					.sp_box_annonce_bottom ul.sp_box_annonce_bottom_ul{
+						text-align: center;
+						font-size: 0.9em;
+						
+					}
+						.sp_box_annonce_bottom li.sp_box_annonce_bottom_li{
+							display: inline-block;
+							padding: 10px 10px;
+							border-right: 1px solid #c3c5c6;
+							width: 100px;
+							color: #999;
+							padding-bottom: 5px;
+					    }
+					    
+					    .sp_box_annonce_bottom img.ico{
+						   vertical-align: middle;
+					    }	
+					
+	
+	#content_box_bottom{
+		background: #f3f3f3;
+		height: 100px;
+		margin: 10px -10px -10px -10px;
+		border-bottom-left-radius: 7px;
+		border-bottom-right-radius: 7px;
+	}
+
+							
+
+

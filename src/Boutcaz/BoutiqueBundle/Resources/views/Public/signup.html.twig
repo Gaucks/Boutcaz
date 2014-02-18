@@ -1,0 +1,76 @@
+{% extends('::base.html.twig') %}
+
+{% block body %}
+	
+	<div id="content_box">
+	
+		<div id="signup">	
+			
+			<div id="signup_form">
+			
+				<h3 id="signup_title">Veuillez compléter ce formulaire pour créer votre compte et votre boutique.</h3>
+				
+				<fieldset id="signup_field">
+				
+					<div class="signup_right">
+						<label class="signup">Nom d'utilisateur</label>
+						<input type="text" class="signup"/>
+					</div>
+					
+					<div class="signup_left">
+						<label class="signup">Email</label>
+						<input type="text" class="signup"/>
+					</div>
+				<div class="clear"></div>
+				
+				<div class="signup_right">
+						<label class="signup">Confirmer mot de passe</label>
+						<input type="text" class="signup"/>
+					</div>
+					
+					<div class="signup_left">
+						<label class="signup">Mot de passe</label>
+						<input type="text" class="signup"/>
+					</div>
+				<div class="clear"></div>
+				
+				<div class="signup_right">
+						<label class="signup">Genre</label>
+						<input type="text" class="signup"/>
+					</div>
+					
+					<div class="signup_left">
+						<label class="signup">Région</label>
+						<input type="text" class="signup"/>
+					</div>
+				<div class="clear"></div>
+				
+				<div class="signup_right">
+						<label class="signup">Ville</label>
+						<input type="text" class="signup"/>
+					</div>
+					
+					<div class="signup_left">
+						<label class="signup">Département</label>
+						<input type="text" class="signup"/>
+					</div>
+
+				<div class="clear"></div>
+				
+				<input type="checkbox" class="signup" ><label>Franchement j'en sais trop rien mais de rien</label>
+				</fieldset>
+				
+				<div id="signup_submit">
+					<input type="submit" value="Ouvrir mon compte sur Boutcaz maintenant" class="submit" />
+				</div>
+				
+			</div>
+		
+		
+		</div>
+		
+		
+		
+	</div>
+	
+{% endblock %}
