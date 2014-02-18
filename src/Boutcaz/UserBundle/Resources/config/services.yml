@@ -2,6 +2,8 @@ parameters:
 #    user.example.class: Boutcaz\UserBundle\Example
 
 services:
-#    user.example:
-#        class: %user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    fos_user.registration.form.type:
+        class: Boutcaz\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: fos_user_registration }

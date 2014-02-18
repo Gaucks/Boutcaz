@@ -11,19 +11,28 @@ class RegistrationFormType extends BaseType
     {
         parent::buildForm($builder, $options);
         $builder
-            ->add('ville', 		'entity',    		array('class' 	   => 'BoutiqueBundle:Ville',
-        											  'property' 	   => 'ville',
-        											  'label' 		   => 'Ville:',
-        											  'group_by' 	   => 'departement.departement',
-        											  'empty_value'	   => 'Choisissez votre ville...'
-        											 )
-				  )
-			->add('type', 		'entity',    		array('class' 	   => 'BoutiqueBundle:Type',
-        											  'property' 	   => 'type',
-        											  'label' 		   => 'Status:',
-        											  'expanded' 	   => true, 
-													  'multiple' 	   => false,
-        											 )
+				->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'signup')))
+				->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'signup')))
+				->add('plainPassword', 'repeated',  array(
+														    'type' 				=> 'password',
+														    'options' 			=> array('translation_domain' => 'FOSUserBundle'),
+														    'first_options' 	=> array('label' => 'form.password', 'attr'			  	  => array('class' => 'signup')),
+														    'second_options' 	=> array('label' => 'form.password_confirmation', 'attr' => array('class' => 'signup')),
+														    'invalid_message' 	=> 'fos_user.password.mismatch',
+															))
+				->add('region', 		'entity',    	array('class' 	       		=> 'BoutiqueBundle:Region',
+														   'property' 	   		=> 'region',
+														   'label' 		   		=> 'Region:',
+														   'group_by' 	   		=> 'departement.departement',
+														   'empty_value'   		=> 'Choisissez votre département...', 
+													       'attr'		   		=> array('class' => 'signup')
+														   ))
+				->add('type', 		'entity',    	array('class' 	   	   		=> 'BoutiqueBundle:Type',
+														  'property' 	   		=> 'type',
+														  'label' 		   		=> 'Status:',
+														  'expanded' 	   		=> true, 
+														  'multiple' 	   		=> false
+														  )
         	    );
     }
     

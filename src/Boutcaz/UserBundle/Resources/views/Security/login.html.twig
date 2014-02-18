@@ -1,0 +1,56 @@
+{% extends('::base.html.twig') %}
+
+	{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+	
+	<div id="content_box">
+	
+		<div id="signup">
+
+			<div id="signup_form">
+			
+				<h3 id="signup_title">Veuillez compléter ce formulaire pour vous identifiez sur Boutcaz.</h3>
+				
+					{% if error %}
+				    	<div class="error">{{ error|trans }}</div>
+					{% endif %}
+					<br />
+				<fieldset id="signup_field">
+					
+					<form action="{{ path("fos_user_security_check") }}" method="post">
+					    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+					
+						<div class="signup_left">
+						    <label class="signup">{{ 'security.login.username'|trans }}</label>
+						    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="signup" />
+						</div>
+						
+						
+						<div class="signup_right">
+					    	<label class="signup">{{ 'security.login.password'|trans }}</label>
+							<input type="password" id="password" name="_password" required="required" class="signup" />
+						</div>
+						
+					<div class="clear"></div>
+					
+				    <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="signup" />
+				    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+				</fieldset>
+				
+				<div id="signup_submit">
+					<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="submit"/>
+				</div>
+				
+				 </form>
+			</div>
+		
+		
+		</div>
+		
+		
+		
+	</div>
+	
+{% endblock %}

@@ -27,8 +27,8 @@
     				<a href="{{ path('boutique_homepage') }}" class="region_title" alt="Logo Boutcaz" >
     					<img src="{{ asset('bundles/boutique/images/logo2.png') }}" alt="Logo Boutcaz "/>
     					
-						{% if entete is defined == false %}
-						
+						{% if entete is defined and entete != false %}
+						 
 							{{ region.region }}
 						
 						{% endif %}
@@ -36,9 +36,18 @@
 				</div>
     			
     			<div id="authenticate_box">
-    				<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    				<a href="{{ path('signup_homepage')}}" alt="" class="" /> <input type="button" value="Inscription" class="signup" /></a>
-    				<a href="{{ path('signin_homepage')}}" alt="" class="" /> <input type="button" value="Connexion" class="signin" /></a>
+    				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    				
+    					<p class="connect">
+    						<a href="{{ path('fos_user_security_logout') }}" class="signup" alt="Déposer une annonce" >Déconnexion</a> |
+    						<a href="{{ path('fos_user_security_login') }}" class="signup" alt="Déposer une annonce" >Kris</a>
+    					</p>
+					{% else %}
+						<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	    				<a href="{{ path('fos_user_registration_register') }}" alt="" class="" /> <input type="button" value="Inscription" class="signup" /></a>
+	    				<a href="{{ path('fos_user_security_login') }}" alt="" class="" /> <input type="button" value="Connexion" class="signin" /></a>
+    				
+    				{% endif %}
     			</div>
     			<div class="clear"></div>
     		</div>

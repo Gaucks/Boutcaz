@@ -18,11 +18,11 @@ class User extends BaseUser
      */
     protected $id;
     
-    // DANS QUEL VILLE IL SE SITUE
+    // DANS QUEL Region IL SE SITUE
     /**
-    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Ville")
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Region")
     */
-	private $ville;
+	private  $region;
 	
 	// PROFESSIONNEL OU PARTICULIER
 	/**
@@ -34,7 +34,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
     }
 
     /**
@@ -45,29 +44,6 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param \Boutcaz\BoutiqueBundle\Entity\Ville $ville
-     * @return User
-     */
-    public function setVille(\Boutcaz\BoutiqueBundle\Entity\Ville $ville = null)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return \Boutcaz\BoutiqueBundle\Entity\Ville 
-     */
-    public function getVille()
-    {
-        return $this->ville;
     }
 
     /**
@@ -91,5 +67,28 @@ class User extends BaseUser
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Region $region
+     * @return User
+     */
+    public function setRegion(\Boutcaz\BoutiqueBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

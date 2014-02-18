@@ -1,0 +1,67 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div id="content_box">
+	
+		<div id="signup">	
+			
+			<div id="signup_form">
+			
+				<h3 id="signup_title">Veuillez compléter ce formulaire pour créer votre compte et votre boutique.</h3>
+				
+	{{ form_start(form) }}
+				
+				<fieldset id="signup_field">
+							
+							<div class="signup_left">
+								<label class="signup">Email</label>
+								{{ form_widget(form.email) }}
+							</div>
+							
+							<div class="signup_right">
+								<label class="signup">Nom d'utilisateur</label>
+								{{ form_widget(form.username) }}
+							</div>
+							
+						<div class="clear"></div>
+						
+							<div class="signup_left">
+								<label class="signup">Mot de passe</label>
+								{{ form_widget(form.plainPassword.first) }}
+							</div>
+							
+							<div class="signup_right">
+								<label class="signup">Confirmer mot de passe</label>
+								{{ form_widget(form.plainPassword.second) }}
+							</div>
+							
+						<div class="clear"></div>
+						
+							<div class="signup_left">
+								<label class="signup">Région</label>
+								{{ form_widget(form.region) }}
+							</div>
+							
+							<div class="signup_right">
+								<label class="signup">Vous êtes un(e)</label>
+								{{ form_widget(form.type) }}
+							</div> 
+
+						<div class="clear"></div>
+
+				</fieldset>
+
+	{{ form_rest(form) }}
+	
+					<div id="signup_submit">
+						<input type="submit" value="Ouvrir mon compte sur Boutcaz maintenant" class="submit" />
+					</div>
+					
+				</form>			
+			</div>
+		
+		
+		</div>
+		
+		
+		
+	</div>
+	

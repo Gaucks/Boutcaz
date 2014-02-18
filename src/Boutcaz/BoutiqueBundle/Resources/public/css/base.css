@@ -16,6 +16,7 @@ input{ font-size: 0.9em; }
 a{ 		 color: #1581c3; text-decoration: none; }
 a:hover{ color: #000;    text-decoration: none; }
 
+div.error{ color: red; }
 
 #header{
 	background: #FFF;
@@ -47,6 +48,8 @@ a:hover{ color: #000;    text-decoration: none; }
 	
 		#authenticate_box p#create_acc{ font-size: 0.9em; display: inline-block
 		}
+		
+		#authenticate_box p.connect{ font-size: 0.9em; display: inline-block; padding-top: 10px; margin-right: 20px;}
 		
 		#authenticate_box input[type="button"].signup{
 			border-radius:20px;
@@ -156,6 +159,14 @@ a:hover{ color: #000;    text-decoration: none; }
 	width: 1000px;
 	margin: 0 auto;
 	padding: 10px;
+}
+
+#content_base{
+	background: #FFF;
+	width: 1000px;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	padding: 20px;
 }
 
 #sub_header{
