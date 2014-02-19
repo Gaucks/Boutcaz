@@ -1,52 +1,37 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<div class="fos_user_user_show">
+<div id="profile_edit">
 
-<div id="content_base">
+	<div id="profil_edit_left"> {# DEBUT DU BLOC LEFT #}
 
 	<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
 	
-
-			<div id="signup_form">
 			
-				<h3 id="signup_title">Veuillez compléter ce formulaire pour créer votre compte et votre boutique.</h3>
+				<h3 class="profile_etape">1 - Votre annonce</h3>
 				
-					<fieldset id="signup_field">
+					<fieldset id="profile_field">
 							
-					<div class="signup_left">
 								<div class="error">{{ form_errors(form.email) }}</div>
-								<label class="signup">Email</label>
+								<label class="profile">Email:</label>
 								{{ form_widget(form.email) }}
-							</div>
+
 							
-							<div class="signup_right">
+
 								<div class="error">{{ form_errors(form.username) }}</div>
-								<label class="signup">Nom d'utilisateur</label>
+								<label class="profile">Nom d'utilisateur</label>
 								{{ form_widget(form.username) }}
-							</div>
-							
-						<div class="clear"></div>
-						
-							<div class="signup_left">
-								<div class="error">{{ form_errors(form.current_password) }}</div>
-								<label class="signup">Mot de passe</label>
-								{{ form_widget(form.current_password) }}
-							</div>
-							
-						<div class="clear"></div>
-						
-							<div class="signup_left">
+
 								<div class="error">{{ form_errors(form.region) }}</div>
-								<label class="signup">Région</label>
+								<label class="profile">Votre région:</label>
 								{{ form_widget(form.region) }}
-							</div>
-							
-							<div class="signup_right">
+
 								<div class="error">{{ form_errors(form.type) }}</div>
-								<label class="signup">Vous êtes un(e)</label>
+								<label class="profile">Vous êtes un(e):</label>
 								{{ form_widget(form.type) }}
-							</div> 
-
-						<div class="clear"></div>
-
+								
+								<div class="error">{{ form_errors(form.current_password) }}</div>
+								<label class="profile">Mot de passe:</label>
+								{{ form_widget(form.current_password) }}
 					
 					</fieldset>
 					
@@ -57,7 +42,16 @@
 					{{ form_rest(form) }}
 
 				</form> {# Fin du formulaire #}
-		
-		</div> {# Fin du bloc content #}
-		
-	</div> {# Fin du bloc content de base #}
+				
+	</div> {# FIN DU BLOC LEFT #}
+	
+	<div id="profil_edit_right">
+	
+	
+	</div>
+	
+	<div class="clear"></div>
+
+</div>
+
+</div>

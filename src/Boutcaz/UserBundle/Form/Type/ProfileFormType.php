@@ -34,7 +34,7 @@ class ProfileFormType extends BaseType
 				->add('type', 		'entity',    	array('class' 	   	   		=> 'BoutiqueBundle:Type',
 														  'property' 	   		=> 'type',
 														  'label' 		   		=> 'Status:',
-														  'expanded' 	   		=> true, 
+														  'expanded' 	   		=> false, 
 														  'multiple' 	   		=> false
 														  )
         	    )

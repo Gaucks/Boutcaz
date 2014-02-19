@@ -1,7 +1,77 @@
 .fos_user_user_show{
 	width: 1000px;
+	background: #FFF;
+	border: 1px solid #ccc;
 }
 
 #profile_edit{
 	
 }
+
+#profile_edit input, .input textarea, .input select{
+	outline: none;
+	width: 100%;
+	padding-left: 10px;
+	border: 1px #E5E5E5 solid;
+	border-bottom-width: 2px;
+	background-color: #FFF;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+	#profil_edit_left h3.profile_etape{
+			background: #127fc2;
+			margin: 0px 20px 10px -30px;
+			text-indent: 20px;
+			padding: 2px 0;
+			width: 250px;
+			color: #FFF;
+			border-radius: 20px;	
+	}
+	
+	#profile_edit select{
+		outline: none;
+		width: 103%;
+		border: 1px #E5E5E5 solid;
+		border-bottom-width: 2px;
+		background-color: #FFF;
+		height: 27px;
+		margin-bottom: 10px;
+	}
+	
+	#profile_edit input[type="radio"]{
+		background: #fff;
+		border: 1px solid #ccc;
+		margin: 10px 5px 0 5px;
+		display: inline-block;
+		width: 20px;
+		height: 18px;
+		vertical-align: sub;
+		margin-bottom: 20px;
+	}
+
+	#profil_edit_left{
+		float: left;
+		width: 400px;
+		background: #eee;
+		padding: 20px;
+	}
+	
+			#profil_edit_left fieldest#profile_field{
+				
+			}
+			
+			#profil_edit_left label.profile{
+				display: inline-block;
+				color: #666;
+			}
+			
+			#profil_edit_left label.required{
+				display: inline-block;
+				margin-right: 30px;
+			}
+
+	
+	#profil_edit_right{
+		float: right;
+	}
