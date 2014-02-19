@@ -11,6 +11,7 @@
 	        		'bundles/Boutique/css/annonce.css'
 	        		'bundles/Boutique/css/signup.css'
 	        		'bundles/Boutique/css/deposer.css'
+	        		'bundles/User/css/profile.css'
 	        		
 	         %}
 				<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
@@ -40,7 +41,7 @@
     				
     					<p class="connect">
     						<a href="{{ path('fos_user_security_logout') }}" class="signup" alt="Déposer une annonce" >Déconnexion</a> |
-    						<a href="{{ path('fos_user_security_login') }}" class="signup" alt="Déposer une annonce" >Kris</a>
+    						<a href="{{ path('fos_user_profile_edit') }}" class="signup" alt="Déposer une annonce" >Teste</a>
     					</p>
 					{% else %}
 						<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>

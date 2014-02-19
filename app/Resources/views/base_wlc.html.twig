@@ -32,7 +32,7 @@
     				
     					<p class="connect">
     						<a href="{{ path('fos_user_security_logout') }}" class="signup" alt="Déposer une annonce" >Déconnexion</a> |
-    						<a href="{{ path('fos_user_security_login') }}" class="signup" alt="Déposer une annonce" >Kris</a>
+    						<a href="{{ path('fos_user_profile_edit') }}" class="signup" alt="Déposer une annonce" >{{ user }}</a>
     					</p>
 					{% else %}
 						<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
