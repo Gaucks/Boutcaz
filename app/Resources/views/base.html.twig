@@ -89,26 +89,21 @@
     	<div id="sub_header"> 
     	
 	    		<div id="sub_header_box">
-	    			{# PARTIE A MODELER #}
-	    			
-		    			<fieldset id="recherche">
+	    		
+	    		{# PARTIE A MODELER #}
+		    		{% block naviation %}
+		    		
+		    			{% if profilenavigation is defined and profilenavigation != NULL %}
 		    			
-		    			<label class="recherche">Recherche</label>
-		    			<input type="text" class="recherche" placeholder="Ex: Citroen C4, Smartphone etc..."/>
+		    				{{ include('UserBundle:Template:navigation.html.twig')}}
 		    			
-		    			<label class="recherche">Categorie</label>
-		    			<select class="recherche">
-		    				<option>Toutes les catéories</option>
-		    			</select>
+						{% else %}
 		    			
-		    			<label class="recherche">Trier par </label>
-		    			<select class="option">
-		    				<option>Date</option>
-		    				<option>Tarif</option>
-		    			</select>
-		    			<input type="submit" class="submit" value="Trouver" />
-		    			</fieldset>
-		    			
+			    			{{ include('UserBundle:Template:navigation.html.twig')}}
+			    			
+						{% endif %}
+			    	
+			    	{% endblock %}
 			    </div>
     		
     	</div>
