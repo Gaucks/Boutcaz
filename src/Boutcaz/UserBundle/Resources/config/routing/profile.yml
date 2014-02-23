@@ -1,0 +1,9 @@
+fos_user_profile_show:
+    pattern:  /
+    defaults: { _controller: FOSUserBundle:Profile:show }
+    requirements:
+        method:  GET
+    
+fos_user_profile_edit:
+    pattern:  /editer
+    defaults: { _controller: UserBundle:Profile:edit }

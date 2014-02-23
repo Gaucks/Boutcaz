@@ -41,7 +41,7 @@
     				
     					<p class="connect">
     						<a href="{{ path('fos_user_security_logout') }}" class="signup" alt="Déposer une annonce" >Déconnexion</a> |
-    						<a href="{{ path('fos_user_profile_edit') }}" class="signup" alt="Déposer une annonce" >Teste</a>
+    						<a href="{{ path('fos_user_profile_edit') }}" class="signup" alt="Déposer une annonce" >{{ app.user.username }}</a>
     					</p>
 					{% else %}
 						<p id="create_acc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -91,15 +91,15 @@
 	    		<div id="sub_header_box">
 	    		
 	    		{# PARTIE A MODELER #}
-		    		{% block naviation %}
+		    		{% block navigation %}
 		    		
-		    			{% if profilenavigation is defined and profilenavigation != NULL %}
+		    			{% if profilnavigation is defined and profilnavigation != NULL %}
 		    			
-		    				{{ include('UserBundle:Template:navigation.html.twig')}}
+		    				{{ render(controller('UserBundle:User:navigation')) }}
 		    			
 						{% else %}
 		    			
-			    			{{ include('UserBundle:Template:navigation.html.twig')}}
+			    			{{ render(controller('BoutiqueBundle:Boutique:navigation')) }}
 			    			
 						{% endif %}
 			    	

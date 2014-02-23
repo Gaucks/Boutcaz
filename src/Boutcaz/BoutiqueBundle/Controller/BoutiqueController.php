@@ -18,18 +18,6 @@ class BoutiqueController extends Controller
 {
     public function indexAction()
     {
-    	// On récupere les parametres de sécurité
-		$securityContext = $this->container->get('security.context');
-				
-    	if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
-		    
-		    	$user = $securityContext->getToken()->getUser();
-		    	
-		    	$user = $user->getUsername();
-    	}
-    	else{
-	    	$user = NULL;
-    	}
     	
     	//Création du formulaire de recherche
     	$form_recherche = $this->createForm(new rechercheType());
@@ -38,7 +26,7 @@ class BoutiqueController extends Controller
     	
     	$regions = $em->getRepository('BoutiqueBundle:Region')->findBy(array(), null,  10);
     	
-        return $this->render('BoutiqueBundle:Public:accueil.html.twig', array('recherche' => $form_recherche->createView(), 'regions' => $regions, 'user' => $user ));
+        return $this->render('BoutiqueBundle:Public:accueil.html.twig', array('recherche' => $form_recherche->createView(), 'regions' => $regions));
     }
     
     public function deposerAction()
@@ -178,5 +166,10 @@ class BoutiqueController extends Controller
     public function footerAction()
     {
         return $this->render('BoutiqueBundle:Template:footer.html.twig');
+    }
+    
+    public function navigationAction()
+    {
+	    return $this->render('BoutiqueBundle:Template:navigation.html.twig');
     }
 }

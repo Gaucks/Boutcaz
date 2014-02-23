@@ -1,8 +1,29 @@
-
-
-	{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain 'FOSUserBundle' %}
 
 {% block navigation %}
-
-	lol
+	<ul class="profil_navigation">
+		
+		<li class="navigation">
+			<a href="{{ path('fos_user_profile_edit') }}" class="nav">
+				<img src="{{ asset('bundles/boutique/images/icones/user_ico.png') }}" class="nav_profile" alt="" />Modifier le profile
+			</a>
+		</li>
+		
+		<li class="navigation"><a href="" class="nav">
+			<img src="{{ asset('bundles/boutique/images/icones/boutique_ico.png') }}" class="nav_profile" alt="" />Changer le mot de 					passe</a>
+		</li>
+		
+		<li class="navigation"><a href="" class="nav">
+			<a href="#" class="nav">
+			<img src="{{ asset('bundles/boutique/images/icones/picture_ico.png') }}" class="nav_profile" alt="" />Mon actualité
+			</a>
+		</li>
+		
+		<li class="navigation">
+			<a href="" class="nav">
+				<img src="{{ asset('bundles/boutique/images/icones/annonce_ico.png') }}" class="nav_profile" alt="" />Ma messagerie
+			</a>
+		</li>
+		
+	</ul>
 {% endblock navigation %}

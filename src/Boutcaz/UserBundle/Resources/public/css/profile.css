@@ -106,8 +106,7 @@
 				border: 1px #E5E5E5 solid;
 				border-bottom-width: 2px;
 				background-color: #FFF;
-				height: 73px;
-				margin-bottom: 10px;
+				height: 84px;
 			}
 			
 #profile_submit{
@@ -127,8 +126,23 @@
 				width: 100%;
 			}
 			
-/* PARTIE CONCERNANT LE SUBHEADER */			
+/* PARTIE CONCERNANT LE SUBHEADER, LA NAVIGATION */			
 
+#sub_header_box ul.profil_navigation{
+	text-align: left;
+}
+
+	#sub_header_box li.navigation{
+		display: inline-block;
+		border-right: 1px solid #ccc;
+		padding: 5px 10px;
+	}
+	
+		#sub_header_box img.nav_profile{
+			width: 24px;
+			vertical-align: middle;
+			margin-right: 5px;
+		}
 			
 			
 			
