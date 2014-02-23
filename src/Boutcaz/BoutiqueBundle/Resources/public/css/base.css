@@ -11,12 +11,57 @@ h2 { font-size: 1.25em; color: #1581c3  }
 h3 { font-size: 1.1em; color: #1581c3 }
 h4 { font-size: 0.9em; color: #1581c3  }
 
-input{ font-size: 0.9em; }
+input[type="text"], input[type="email"]{ font-size: 0.9em; font-family: georgia; font-style: italic; }
 
 a{ 		 color: #1581c3; text-decoration: none; }
 a:hover{ color: #000;    text-decoration: none; }
 
 div.error{ color: red; }
+
+input::-webkit-input-placeholder {
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+
+}
+input::-moz-placeholder {
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+
+}
+input:-moz-placeholder {   /* Older versions of Firefox */
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+
+}
+input:-ms-input-placeholder { 
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+}
+
+textarea::-webkit-input-placeholder {
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+}
+textarea::-moz-placeholder {
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+}
+textarea:-moz-placeholder {   /* Older versions of Firefox */
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+}
+textarea:-ms-input-placeholder { 
+	font-family: georgia;
+	font-style: italic;
+	color: #76726d;
+}
 
 #header{
 	background: #FFF;
@@ -183,12 +228,20 @@ div.error{ color: red; }
 	}
 	
 		#sub_header_box ul.sub_header_box_region{
+			
 		}
 		
 			#sub_header_box li.menu_region{
 				display: inline-block;
-				padding: 10px 10px;
+				padding: 10px 15px 5px 15px;
 				border-right: 1px solid #c3c5c6;
+				margin: -5px 0px -5px -5px;
+				border-bottom: 3px solid #FFF;
+			}
+			
+			#sub_header_box li.menu_region:hover{
+				border-bottom: 3px solid #000;
+				color: #000;
 			}
 
 

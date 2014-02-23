@@ -99,7 +99,7 @@
 				
 			}
 
-			#profil_edit_right textarea#description{
+			#profil_edit_right textarea.login{
 				outline: none;
 				width: 100%;
 				padding-left: 10px;
@@ -130,18 +130,34 @@
 
 #sub_header_box ul.profil_navigation{
 	text-align: left;
+	margin: -5px 0;
 }
 
 	#sub_header_box li.navigation{
 		display: inline-block;
 		border-right: 1px solid #ccc;
-		padding: 5px 10px;
+		padding: 15px 15px 10px 15px;
 	}
+	
+	#sub_header_box li.navigation:hover{
+		border-bottom: 3px solid #000;
+	}
+	
+	#sub_header_box li.navigation_actived{
+		display: inline-block;
+		background: #f0f0f0;
+		border-right: 1px solid #ccc;
+		padding: 15px 15px 10px 15px;
+		font-weight: bold;	
+		border-bottom: 3px solid #000;
+	}
+
 	
 		#sub_header_box img.nav_profile{
 			width: 24px;
 			vertical-align: middle;
-			margin-right: 5px;
+			margin-right: 2px;
+			margin-top: -5px;
 		}
 			
 			

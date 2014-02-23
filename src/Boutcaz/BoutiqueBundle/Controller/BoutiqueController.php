@@ -24,7 +24,7 @@ class BoutiqueController extends Controller
     	
     	$em = $this->getDoctrine();
     	
-    	$regions = $em->getRepository('BoutiqueBundle:Region')->findBy(array(), null,  10);
+    	$regions = $em->getRepository('BoutiqueBundle:Region')->findBy(array(), null,  9);
     	
         return $this->render('BoutiqueBundle:Public:accueil.html.twig', array('recherche' => $form_recherche->createView(), 'regions' => $regions));
     }

@@ -24,7 +24,7 @@ class ProfileFormType extends BaseType
         $builder
 				->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'signup')))
 				->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'signup')))
-				->add('region', 		'entity',    	array('class' 	       	=> 'BoutiqueBundle:Region',
+				->add('region', 		'entity',    array('class' 	       		=> 'BoutiqueBundle:Region',
 														   'property' 	   		=> 'region',
 														   'label' 		   		=> 'Region:',
 														   'group_by' 	   		=> 'departement.departement',
@@ -36,14 +36,13 @@ class ProfileFormType extends BaseType
 														  'label' 		   		=> 'Status:',
 														  'expanded' 	   		=> false, 
 														  'multiple' 	   		=> false
-														  )
-        	    )
-				->add('current_password', 'password', array(
-															'label' 				=> 'form.current_password',
-												            'translation_domain' 	=> 'FOSUserBundle',
-												            'mapped' 				=> false,
-												            'constraints'			=> $constraint,
-												            'attr'					=> array('class' => 'signup')
+														  ))											   
+				->add('current_password','password',array(
+														   'label' 				    => 'form.current_password',
+												           'translation_domain' 	=> 'FOSUserBundle',
+												           'mapped' 				=> false,
+												           'constraints'			=> $constraint,
+												           'attr'					=> array('class' => 'signup')
         ));
     }
     
