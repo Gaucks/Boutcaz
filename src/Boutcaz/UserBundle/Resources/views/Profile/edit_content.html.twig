@@ -15,8 +15,6 @@
 								<label class="profile">Email:</label>
 								{{ form_widget(form.email) }}
 
-							
-
 								<div class="error">{{ form_errors(form.username) }}</div>
 								<label class="profile">Nom d'utilisateur</label>
 								{{ form_widget(form.username) }}
@@ -39,82 +37,75 @@
 						<input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="submit"/>
 					</div>
 					
-					{{ form_rest(form) }}
 
-				</form> {# Fin du formulaire #}
+
 				
 	</div> {# FIN DU BLOC LEFT #}
 	
 	<div id="profil_edit_right">
 	
 		<div class="profil_edit_right_box">
-		<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST"class="fos_user_profile_edit">
-	
-			
+		
+
+
 				<h3 class="profile_etape">2 - Informations personnelles</h3>
-				
+
 					<fieldset id="profile_field">
-							
+
 							<div class="profil_etape_left">
-								<div class="error">{{ form_errors(form.username) }}</div>
+								<div class="error">{{ form_errors(form.profile.firstname) }}</div>
 								<label class="profile">Nom de famille:</label>
-								<input type="text" class="login" />
+								{{ form_widget(form.profile.firstname) }}
 							</div>
-							
+
 							<div class="profil_etape_right">	
-								<div class="error">{{ form_errors(form.region) }}</div>
+								<div class="error">{{ form_errors(form.profile.surname) }}</div>
 								<label class="profile">Prénom:</label>
-								<input type="text" class="login" />
+								{{ form_widget(form.profile.surname) }}
 							</div>
 							<div class="clear"></div>
-							
+
 							<div class="profil_etape_left">
-								<div class="error">{{ form_errors(form.type) }}</div>
+								<div class="error">{{ form_errors(form.profile.phone) }}</div>
 								<label class="profile">Téléphone:</label>
-								<input type="text" class="login" />
+								{{ form_widget(form.profile.phone) }}
 							</div>
 							<div class="profil_etape_right">	
-								<div class="error">{{ form_errors(form.region) }}</div>
+								<div class="error">{{ form_errors(form.profile.showphone) }}</div>
 								<label class="profile">Confidentialité:</label>
-								<select>
-									<option>Masquer mon numéro</option>
-									<option>Afficher mon numéro</option>
-								</select>
+								{{ form_widget(form.profile.showphone) }}
 							</div>
-							
+
 							<div class="clear"></div>
-							
+
 							<div class="profil_etape_left">	
-								<div class="error">{{ form_errors(form.current_password) }}</div>
+								<div class="error">{{ form_errors(form.profile.departement) }}</div>
 								<label class="profile">Département:</label>
-								<select>
-									<option>Choisissez un département</option>
-								</select>
+								{{ form_widget(form.profile.departement) }}
 							</div>
-							
+
 							<div class="profil_etape_right">
-								<div class="error">{{ form_errors(form.current_password) }}</div>
+								<div class="error">{{ form_errors(form.profile.ville) }}</div>
 								<label class="profile">Ville:</label>
-								<select>
-									<option>Choisissez une ville</option>
-								</select>
+								{{ form_widget(form.profile.ville) }}
 							</div>
-							
+
 							<div>
 								<label class="profile">Description:</label>
-								<textarea class="login" id="description"></textarea>
+								{{ form_widget(form.profile.description) }}
 							</div>
-												
+
 					</fieldset>
-					
+
 					<div id="profile_submit">
-						<input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="submit"/>
+						<input type="submit" value="Mettre à jour" class="submit"/>
 					</div>
-					
+
 					{{ form_rest(form) }}
 
 				</form> {# Fin du formulaire #}
-				</div>
+		
+		</div>
 	</div>
 	
 	<div class="clear"></div>

@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraint\UserPassword as OldUserPassword;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use Boutcaz\UserBundle\Form\Type\ProfilePersoType;
 
 class ProfileFormType extends BaseType
 {
@@ -23,7 +24,9 @@ class ProfileFormType extends BaseType
         parent::buildForm($builder, $options);
         $builder
 				->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'signup')))
-				->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' => 'signup')))
+				->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'attr' => array('class' 				=> 'signup',
+																																   'placeholder' 		=> 'Nom d\'utilisateur'
+																																   )))
 				->add('region', 		'entity',    array('class' 	       		=> 'BoutiqueBundle:Region',
 														   'property' 	   		=> 'region',
 														   'label' 		   		=> 'Region:',
@@ -43,7 +46,9 @@ class ProfileFormType extends BaseType
 												           'mapped' 				=> false,
 												           'constraints'			=> $constraint,
 												           'attr'					=> array('class' => 'signup')
-        ));
+														   ))
+        		->add('profile', new ProfilePersoType())
+        ;
     }
     
     public function getName()

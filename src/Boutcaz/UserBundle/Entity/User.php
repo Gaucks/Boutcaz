@@ -12,6 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
+
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -30,6 +32,12 @@ class User extends BaseUser
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Type")
     */
 	private $type;
+	
+	// A quel profile il appartient
+	/**
+    * @ORM\OneToOne(targetEntity="Boutcaz\UserBundle\Entity\ProfilePerso", cascade={"persist"})
+    */
+	private $profile;
     
 
     public function __construct()
@@ -37,6 +45,7 @@ class User extends BaseUser
         parent::__construct();
     }
 
+ 
     /**
      * Get id
      *
@@ -45,6 +54,29 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Region $region
+     * @return User
+     */
+    public function setRegion(\Boutcaz\BoutiqueBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 
     /**
@@ -71,25 +103,25 @@ class User extends BaseUser
     }
 
     /**
-     * Set region
+     * Set profile
      *
-     * @param \Boutcaz\BoutiqueBundle\Entity\Region $region
+     * @param \Boutcaz\UserBundle\Entity\ProfilePerso $profile
      * @return User
      */
-    public function setRegion(\Boutcaz\BoutiqueBundle\Entity\Region $region = null)
+    public function setProfile(\Boutcaz\UserBundle\Entity\ProfilePerso $profile = null)
     {
-        $this->region = $region;
+        $this->profile = $profile;
 
         return $this;
     }
 
     /**
-     * Get region
+     * Get profile
      *
-     * @return \Boutcaz\BoutiqueBundle\Entity\Region 
+     * @return \Boutcaz\UserBundle\Entity\ProfilePerso 
      */
-    public function getRegion()
+    public function getProfile()
     {
-        return $this->region;
+        return $this->profile;
     }
 }

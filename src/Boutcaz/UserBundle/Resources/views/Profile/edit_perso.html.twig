@@ -1,0 +1,66 @@
+
+<form action="{{ path('user_profile_edit') }}" {{ form_enctype(form) }} method="POST"class="fos_user_profile_edit">
+
+
+				<h3 class="profile_etape">2 - Informations personnelles</h3>
+
+					<fieldset id="profile_field">
+					
+							{% for error in errors %}
+								<div class="error">{{ error.phone }}</div>
+								<div class="error">{{ form.phone }}</div>
+							{% endfor %}
+							
+							{{ errors }}
+							<div class="profil_etape_left">
+								<div class="error">{{ form_errors(form.firstname) }}</div>
+								<label class="profile">Nom de famille:</label>
+								{{ form_widget(form.firstname) }}
+							</div>
+
+							<div class="profil_etape_right">	
+								<div class="error">{{ form_errors(form.surname) }}</div>
+								<label class="profile">Prénom:</label>
+								{{ form_widget(form.surname) }}
+							</div>
+							<div class="clear"></div>
+
+							<div class="profil_etape_left">
+								<div class="error">{{ form_errors(form.phone) }}</div>
+								<label class="profile">Téléphone:</label>
+								{{ form_widget(form.phone) }}
+							</div>
+							<div class="profil_etape_right">	
+								<div class="error">{{ form_errors(form.showphone) }}</div>
+								<label class="profile">Confidentialité:</label>
+								{{ form_widget(form.showphone) }}
+							</div>
+
+							<div class="clear"></div>
+
+							<div class="profil_etape_left">	
+								<div class="error">{{ form_errors(form.departement) }}</div>
+								<label class="profile">Département:</label>
+								{{ form_widget(form.departement) }}
+							</div>
+
+							<div class="profil_etape_right">
+								<div class="error">{{ form_errors(form.ville) }}</div>
+								<label class="profile">Ville:</label>
+								{{ form_widget(form.ville) }}
+							</div>
+
+							<div>
+								<label class="profile">Description:</label>
+								{{ form_widget(form.description) }}
+							</div>
+
+					</fieldset>
+
+					<div id="profile_submit">
+						<input type="submit" value="Mettre à jour" class="submit"/>
+					</div>
+
+					{{ form_rest(form) }}
+
+				</form> {# Fin du formulaire #}
