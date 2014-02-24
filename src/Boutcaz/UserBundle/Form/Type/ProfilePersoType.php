@@ -22,7 +22,7 @@ class ProfilePersoType extends AbstractType
             ->add('firstname', 'text' , array('required' => FALSE, 'attr' => array('class' 			=> 'login',
             																	 'placeholder' 		=> 'Nom')))
             
-            ->add('phone', 'number' , array('required' => FALSE,'invalid_message'=> 'Le numéro ne peut contenir que des chiffres','attr' => array('class' 		=> 'login',
+            ->add('phone', 'number' , array('required' => FALSE, 'invalid_message'=> 'Le numéro ne peut contenir que des chiffres','attr' => array('class' 		=> 'login',
             																																	  'placeholder'	=> 'Ex: 0102030405',
             																    )))
             ->add('showphone','choice', array( 'choices' => array(

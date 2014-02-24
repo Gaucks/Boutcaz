@@ -38,6 +38,7 @@ class ProfilePerso
     /**
      * @var string
      *
+     * @Assert\Regex(pattern = "/[0-9]/", match=true,  message = "Le téléphone ne doit contenir que des chiffres" )
      * @ORM\Column(name="surname", type="string", length=255, nullable=true)
      */
     private $surname;
@@ -53,7 +54,7 @@ class ProfilePerso
      * @var integer
      * @ORM\Column(name="phone", type="integer", nullable=true)
      * @Assert\Length(max = "14" , maxMessage = "Le numéro ne peut contenir que 14 chiffres.")
-     * @Assert\Regex(pattern = "/^[0-9]+$/", message = "Le téléphone ne doit contenir que des chiffres" )
+     * @Assert\Regex(pattern = "/[0-9]/", message = "Le téléphone ne doit contenir que des chiffres" )
      */
     private $phone;
 
@@ -68,6 +69,7 @@ class ProfilePerso
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\Regex("/^\w+/")
      */
     private $description;
 

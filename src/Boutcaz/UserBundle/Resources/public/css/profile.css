@@ -136,7 +136,7 @@
 	#sub_header_box li.navigation{
 		display: inline-block;
 		border-right: 1px solid #ccc;
-		padding: 15px 15px 10px 15px;
+		padding: 10px 15px 5px 15px;
 	}
 	
 	#sub_header_box li.navigation:hover{
@@ -147,7 +147,7 @@
 		display: inline-block;
 		background: #f0f0f0;
 		border-right: 1px solid #ccc;
-		padding: 15px 15px 10px 15px;
+		padding: 10px 15px 5px 15px;
 		font-weight: bold;	
 		border-bottom: 3px solid #000;
 	}
