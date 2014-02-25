@@ -14,7 +14,7 @@ fos_user_resetting:
     prefix: /resetting
 
 fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    resource: "@UserBundle/Resources/config/routing/change_password.yml"
     prefix: /profile
 
 user_profile_edit:

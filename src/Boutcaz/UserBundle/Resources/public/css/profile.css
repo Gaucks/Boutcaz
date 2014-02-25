@@ -4,16 +4,7 @@
 	border: 1px solid #ccc;
 }
 
-#profile_edit{
-}
-
-
-#profile_edit label.profile{
-				display: inline-block;
-				color: #666;
-			}
-			
-#profile_edit h3.profile_etape{
+.fos_user_user_show h3.profile_etape{
 			background: #127fc2;
 			margin: 0px 20px 10px -40px;
 			text-indent: 20px;
@@ -22,6 +13,15 @@
 			color: #FFF;
 			border-radius: 20px;	
 			display: inline-block;
+			}
+			
+#profile_edit{
+}
+
+
+#profile_edit label.profile{
+				display: inline-block;
+				color: #666;
 			}
 
 #profile_edit input, .input select{
@@ -162,8 +162,27 @@
 			margin-top: -5px;
 		}
 			
-			
-			
+/* PROFILE EDIT MOT DE PASSE */	
+
+#profile_edit_pass{
+	padding: 20px;
+	
+}	#profile_edit_pass label{
+		display: inline-block;
+		color: #666;
+		width: 330px;
+	}
+				
+	#profile_edit_pass input{
+		outline: none;
+		width: 290px;
+		padding-left: 10px;
+		border: 1px #E5E5E5 solid;
+		border-bottom-width: 2px;
+		background-color: #FFF;
+		height: 25px;
+		margin-bottom: 10px;
+}		
 			
 			
 			
