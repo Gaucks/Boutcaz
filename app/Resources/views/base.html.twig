@@ -95,7 +95,7 @@
 		    		
 		    			{% if profilnavigation is defined and profilnavigation != NULL %}
 		    			
-		    				{{ render(controller('UserBundle:User:navigation')) }}
+		    				{{ render(controller('UserBundle:User:navigation', {'navigation': navigation} )) }}
 		    			
 						{% else %}
 		    			

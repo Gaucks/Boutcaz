@@ -8,9 +8,9 @@ use Boutcaz\UserBundle\Form\Type\ProfilePersoType;
 
 class UserController extends Controller
 {
-    public function navigationAction()
+    public function navigationAction($navigation = 'nav_profile')
     {
-    	return $this->render('UserBundle:Template:navigation.html.twig');		
+    	return $this->render('UserBundle:Template:navigation.html.twig', array('navigation' => $navigation));		
 	}
 	
 }

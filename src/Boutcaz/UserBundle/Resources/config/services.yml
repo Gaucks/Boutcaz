@@ -12,3 +12,8 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: fos_user_profile }
+    fos_user.change_password.form.type:
+        class: Boutcaz\UserBundle\Form\Type\ChangePasswordFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: fos_user_change_password }

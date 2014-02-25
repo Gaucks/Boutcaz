@@ -80,6 +80,6 @@ class ChangePasswordController extends ContainerAware
 
         return $this->container->get('templating')->renderResponse(
             'FOSUserBundle:ChangePassword:changePassword.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView(),'profilnavigation' => TRUE ));
+            array('form' => $form->createView(),'profilnavigation' => TRUE, 'navigation' => 'nav_password' ));
     }
 }

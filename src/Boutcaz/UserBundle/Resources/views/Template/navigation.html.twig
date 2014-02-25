@@ -3,23 +3,23 @@
 {% block navigation %}
 	<ul class="profil_navigation">
 		
-		<li class="navigation_actived">
+		<li class="{% if navigation == 'nav_profile' %} navigation_actived {% else %} navigation {% endif %}">
 			<a href="{{ path('fos_user_profile_edit') }}" class="nav">
 				<img src="{{ asset('bundles/boutique/images/menu/Gear.png') }}" class="nav_profile" alt="" />Profile
 			</a>
 		</li>
 		
-		<li class="navigation"><a href="{{ path('fos_user_change_password') }}" class="nav">
+		<li class="{% if navigation == 'nav_password' %} navigation_actived {% else %} navigation {% endif %}"><a href="{{ path('fos_user_change_password') }}" class="nav">
 			<img src="{{ asset('bundles/boutique/images/menu/Connections.png') }}" class="nav_profile" alt="" />Mot de passe</a>
 		</li>
 		
-		<li class="navigation"><a href="" class="nav">
+		<li class="{% if navigation == 'nav_actu' %} navigation_actived {% else %} navigation {% endif %}"><a href="" class="nav">
 			<a href="#" class="nav">
 			<img src="{{ asset('bundles/boutique/images/menu/RemoteDesktop.png') }}" class="nav_profile" alt="" />Actualité
 			</a>
 		</li>
 		
-		<li class="navigation">
+		<li class="{% if navigation == 'nav_mess' %} navigation_actived {% else %} navigation {% endif %}">
 			<a href="" class="nav">
 				<img src="{{ asset('bundles/boutique/images/menu/E-Mail.png') }}" class="nav_profile" alt="" />Messagerie
 			</a>

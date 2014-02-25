@@ -91,8 +91,8 @@ class ProfileController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView(), 'profilnavigation' => TRUE )
+            'UserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
+            array('form' => $form->createView(), 'profilnavigation' => TRUE, 'navigation' => 'nav_profile' )
         );
     }
 }

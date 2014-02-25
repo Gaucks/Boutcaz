@@ -139,10 +139,12 @@
 		display: inline-block;
 		border-right: 1px solid #ccc;
 		padding: 10px 15px 5px 15px;
+		margin: 0px 0px 0px -4px;
 	}
 	
 	#sub_header_box li.navigation:hover{
 		border-bottom: 3px solid #000;
+		margin: 0px 0px 0px -4px;
 	}
 	
 	#sub_header_box li.navigation_actived{
@@ -152,6 +154,7 @@
 		padding: 10px 15px 5px 15px;
 		font-weight: bold;	
 		border-bottom: 3px solid #000;
+		margin: 0px 0px 0px -4px;
 	}
 
 	
@@ -173,13 +176,13 @@
 		width: 330px;
 	}
 				
-	#profile_edit_pass input{
+	#profile_edit_pass input.pass{
 		outline: none;
 		width: 290px;
 		padding-left: 10px;
 		border: 1px #E5E5E5 solid;
 		border-bottom-width: 2px;
-		background-color: #FFF;
+		background-color: #f0f0f0;
 		height: 25px;
 		margin-bottom: 10px;
 }		
