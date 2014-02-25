@@ -20,7 +20,7 @@ class RegistrationFormType extends BaseType
 														    'second_options' 	=> array('label' => 'form.password_confirmation', 'attr' => array('class' => 'signup')),
 														    'invalid_message' 	=> 'fos_user.password.mismatch',
 															))
-				->add('region', 		'entity',    	array('class' 	       		=> 'BoutiqueBundle:Region',
+				->add('region', 		'entity',    	array('class' 	       	=> 'BoutiqueBundle:Region',
 														   'property' 	   		=> 'region',
 														   'label' 		   		=> 'Region:',
 														   'group_by' 	   		=> 'departement.departement',
@@ -33,7 +33,14 @@ class RegistrationFormType extends BaseType
 														  'expanded' 	   		=> true, 
 														  'multiple' 	   		=> false
 														  )
-        	    );
+        	    )
+	        	->remove('surname')
+	            ->remove('firstname')
+	            ->remove('phone')
+	            ->remove('showphone')
+	            ->remove('description')
+	            ->remove('departement')
+	            ->remove('ville');
     }
     
     public function getName()

@@ -8,7 +8,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraint\UserPassword as OldUserPassword;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
-use Boutcaz\UserBundle\Form\Type\ProfilePersoType;
 
 class ProfileFormType extends BaseType
 {
@@ -47,7 +46,35 @@ class ProfileFormType extends BaseType
 												           'constraints'			=> $constraint,
 												           'attr'					=> array('class' => 'signup')
 														   ))
-        		->add('profile', new ProfilePersoType())
+        		->add('surname', 'text' , array('required' => FALSE, 'attr' => array('class' 			=> 'login',
+            																	 'placeholder' 		=> 'Prénom',
+            																	 'invalid_message'  => 'On teste')))
+            																	 
+	            ->add('firstname', 'text' , array('required' => FALSE, 'attr' => array('class' 			=> 'login',
+	            																	 'placeholder' 		=> 'Nom')))
+	            
+	            ->add('phone', 'number' , array('required' => FALSE, 'invalid_message'=> 'Le numéro ne peut contenir que des chiffres','attr' => array('class' 		=> 'login',
+	            																																	  'placeholder'	=> 'Ex: 0102030405',
+	            																    )))
+	            ->add('showphone','choice', array( 'choices' => array(
+							                							'1' => 'Maquer mon numéro',
+																		'2' => 'Toujours afficher mon numéro')))
+																		
+	            ->add('description', 'textarea' , array('required' => FALSE, 'attr' => array('class' => 'login')))
+	            
+	            ->add('departement', 		'entity',    	array('required' => FALSE,'class' 	        => 'BoutiqueBundle:Departement',
+															   'property' 	   		=> 'departement',
+															   'label' 		   		=> 'Departement:',
+															   'empty_value'   		=> 'Choisissez votre département...', 
+														       'attr'		   		=> array('class' => 'login')))
+														       
+	            ->add('ville', 				'entity',       array( 'required'		 	=> FALSE,
+	            												   'class' 	        	=> 'BoutiqueBundle:Ville',
+																   'property' 	   		=> 'ville',
+																   'label' 		   		=> 'Ville:',
+																   'empty_value'   		=> 'Choisissez votre ville...', 
+															       'attr'		   		=> array('class' => 'login')
+															   ))
         ;
     }
     

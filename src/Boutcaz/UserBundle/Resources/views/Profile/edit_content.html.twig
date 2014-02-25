@@ -33,10 +33,6 @@
 					
 					</fieldset>
 					
-					<div id="profile_submit">
-						<input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="submit"/>
-					</div>
-					
 
 
 				
@@ -53,61 +49,62 @@
 					<fieldset id="profile_field">
 
 							<div class="profil_etape_left">
-								<div class="error">{{ form_errors(form.profile.firstname) }}</div>
+								<div class="error">{{ form_errors(form.firstname) }}</div>
 								<label class="profile">Nom de famille:</label>
-								{{ form_widget(form.profile.firstname) }}
+								{{ form_widget(form.firstname) }}
 							</div>
 
 							<div class="profil_etape_right">	
-								<div class="error">{{ form_errors(form.profile.surname) }}</div>
+								<div class="error">{{ form_errors(form.surname) }}</div>
 								<label class="profile">Prénom:</label>
-								{{ form_widget(form.profile.surname) }}
+								{{ form_widget(form.surname) }}
 							</div>
 							<div class="clear"></div>
 
 							<div class="profil_etape_left">
-								<div class="error">{{ form_errors(form.profile.phone) }}</div>
+								<div class="error">{{ form_errors(form.phone) }}</div>
 								<label class="profile">Téléphone:</label>
-								{{ form_widget(form.profile.phone) }}
+								{{ form_widget(form.phone) }}
 							</div>
 							<div class="profil_etape_right">	
-								<div class="error">{{ form_errors(form.profile.showphone) }}</div>
+								<div class="error">{{ form_errors(form.showphone) }}</div>
 								<label class="profile">Confidentialité:</label>
-								{{ form_widget(form.profile.showphone) }}
+								{{ form_widget(form.showphone) }}
 							</div>
 
 							<div class="clear"></div>
 
 							<div class="profil_etape_left">	
-								<div class="error">{{ form_errors(form.profile.departement) }}</div>
+								<div class="error">{{ form_errors(form.departement) }}</div>
 								<label class="profile">Département:</label>
-								{{ form_widget(form.profile.departement) }}
+								{{ form_widget(form.departement) }}
 							</div>
 
 							<div class="profil_etape_right">
-								<div class="error">{{ form_errors(form.profile.ville) }}</div>
+								<div class="error">{{ form_errors(form.ville) }}</div>
 								<label class="profile">Ville:</label>
-								{{ form_widget(form.profile.ville) }}
+								{{ form_widget(form.ville) }}
 							</div>
 
 							<div>
 								<label class="profile">Description:</label>
-								{{ form_widget(form.profile.description) }}
+								{{ form_widget(form.description) }}
 							</div>
 
-					</fieldset>
-
+					</fieldset>		
+		
+				
 					<div id="profile_submit">
-						<input type="submit" value="Mettre à jour" class="submit"/>
+						<input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="submit"/>
 					</div>
 
 					{{ form_rest(form) }}
 
 				</form> {# Fin du formulaire #}
-		
+				
 		</div>
 	</div>
-	
+				
 	<div class="clear"></div>
 
 </div>

@@ -32,20 +32,68 @@ class User extends BaseUser
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Type")
     */
 	private $type;
-	
-	// A quel profile il appartient
+
+	// Quel département
 	/**
-    * @ORM\OneToOne(targetEntity="Boutcaz\UserBundle\Entity\ProfilePerso", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Departement")
     */
-	private $profile;
+	private $departement;
+	
+	// Quel ville
+	/**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Ville")
+    */
+	private $ville;
+
+    /**
+     * @var string
+     *
+     * @Assert\Regex(pattern = "/^[a-zA-Z]+$/", match=true,  message = "Le téléphone ne doit contenir que des chiffres" )
+     * @ORM\Column(name="surname", type="string", length=255, nullable=true)
+     */
+    private $surname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @Assert\Regex(pattern = "/^[a-zA-Z]+$/", match=true,  message = "Le téléphone ne doit contenir que des chiffres" )
+     */
+    private $firstname;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="phone", type="integer", nullable=true)
+     * @Assert\Length(max = "14" , maxMessage = "Le numéro ne peut contenir que 14 chiffres.")
+     * @Assert\Regex(pattern = "/[0-9]/", message = "Le téléphone ne doit contenir que des chiffres" )
+     */
+    private $phone;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="showphone", type="boolean")
+     */
+    private $showphone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     * @Assert\Regex("/^\w+/")
+     */
+    private $description;
     
 
     public function __construct()
     {
         parent::__construct();
+        
+        $this->showphone = false;
     }
 
- 
+
+
     /**
      * Get id
      *
@@ -54,6 +102,121 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set surname
+     *
+     * @param string $surname
+     * @return User
+     */
+    public function setSurname($surname)
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * Get surname
+     *
+     * @return string 
+     */
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set showphone
+     *
+     * @param boolean $showphone
+     * @return User
+     */
+    public function setShowphone($showphone)
+    {
+        $this->showphone = $showphone;
+
+        return $this;
+    }
+
+    /**
+     * Get showphone
+     *
+     * @return boolean 
+     */
+    public function getShowphone()
+    {
+        return $this->showphone;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -103,25 +266,48 @@ class User extends BaseUser
     }
 
     /**
-     * Set profile
+     * Set departement
      *
-     * @param \Boutcaz\UserBundle\Entity\ProfilePerso $profile
+     * @param \Boutcaz\BoutiqueBundle\Entity\Departement $departement
      * @return User
      */
-    public function setProfile(\Boutcaz\UserBundle\Entity\ProfilePerso $profile = null)
+    public function setDepartement(\Boutcaz\BoutiqueBundle\Entity\Departement $departement = null)
     {
-        $this->profile = $profile;
+        $this->departement = $departement;
 
         return $this;
     }
 
     /**
-     * Get profile
+     * Get departement
      *
-     * @return \Boutcaz\UserBundle\Entity\ProfilePerso 
+     * @return \Boutcaz\BoutiqueBundle\Entity\Departement 
      */
-    public function getProfile()
+    public function getDepartement()
     {
-        return $this->profile;
+        return $this->departement;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Ville $ville
+     * @return User
+     */
+    public function setVille(\Boutcaz\BoutiqueBundle\Entity\Ville $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Ville 
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }
