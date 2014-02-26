@@ -11,7 +11,7 @@ h2 { font-size: 1.25em; color: #1581c3  }
 h3 { font-size: 1.1em; color: #1581c3 }
 h4 { font-size: 0.9em; color: #1581c3  }
 
-input[type="text"], input[type="email"]{ font-size: 0.9em; font-family: georgia; font-style: italic; }
+input[type="text"], input[type="email"], textarea{ font-size: 1em; font-family: georgia; font-style: italic; }
 
 a{ 		 color: #1581c3; text-decoration: none; }
 a:hover{ color: #000;    text-decoration: none; }

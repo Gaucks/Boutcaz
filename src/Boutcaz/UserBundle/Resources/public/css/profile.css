@@ -19,10 +19,10 @@
 }
 
 
-#profile_edit label.profile{
-				display: inline-block;
-				color: #666;
-			}
+	#profile_edit label.profile{
+			display: inline-block;
+			color: #666;
+	}
 
 #profile_edit input, .input select{
 	outline: none;
@@ -185,6 +185,7 @@
 		background-color: #f0f0f0;
 		height: 25px;
 		margin-bottom: 10px;
+		font-size: 0.9em;
 }		
 			
 			

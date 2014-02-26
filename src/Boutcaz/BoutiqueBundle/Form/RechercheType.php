@@ -23,12 +23,11 @@ class RechercheType extends AbstractType
             																)
             										 )
             	  )
-            ->add('ville',		'entity', 		array('class' 		=> 'BoutiqueBundle:Ville',
-            										  'property' 	=> 'ville',
+            ->add('region',		'entity', 		array('class' 		=> 'BoutiqueBundle:Region',
+            										  'property' 	=> 'region',
             										  'label' 		=> false,
-            										  'group_by' 	=> 'departement.departement', 
             										  'required' 	=> false , 
-            										  'empty_value' => 'Choisissez votre ville...',
+            										  'empty_value' => 'Choisissez votre région...',
             										  'attr' 		=> array( 
             										  						  'class' => 'recherche'
             										  						)

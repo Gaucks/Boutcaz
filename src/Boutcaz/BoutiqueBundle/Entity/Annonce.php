@@ -5,11 +5,15 @@ namespace Boutcaz\BoutiqueBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+// On rajoute ce use pour le context :
+use Symfony\Component\Validator\ExecutionContextInterface;
+
 /**
  * Annonces
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Boutcaz\BoutiqueBundle\Entity\AnnonceRepository")
+ * @Assert\Callback(methods={"titreValide"})
  */
 class Annonce
 {   
@@ -103,6 +107,23 @@ class Annonce
 		$this->published  = TRUE;
 
 	}
+	
+	 public function titreValide(ExecutionContextInterface $context)
+    {
+	    $mots_interdits = array('Vend', 'Vends', 'Achete', 'achete', 'donne');
+	    
+	    // On vérifie que le contenu ne contient pas l'un des mots
+		if (preg_match('#'.implode('|', $mots_interdits).'#', $this->getTitre())) 
+		{
+			// La règle est violée, on définit l'erreur et son message
+			// 1er argument : on dit quel attribut l'erreur concerne, ici « contenu »
+			// 2e argument : le message d'erreur
+			$context->addViolationAt('titre', 'Titre invalide car il contient un mot interdit.', array(), null);
+		}
+	    
+	    
+    }
+    
     /**
      * Get id
      *
