@@ -20,8 +20,36 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     */
+    private $surname;
+
+    /**
+     * @var string
+     */
+    private $firstname;
+
+    /**
+     * @var integer
+     */
+    private $phone;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="showphone", type="boolean")
+     */
+    private $showphone;
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
     
-    // DANS QUEL Region IL SE SITUE
+     // DANS QUEL Region IL SE SITUE
     /**
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Region")
     */
@@ -44,45 +72,6 @@ class User extends BaseUser
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Ville")
     */
 	private $ville;
-
-    /**
-     * @var string
-     *
-     * @Assert\Regex(pattern = "/^[a-zA-Z]+$/", match=true,  message = "Le téléphone ne doit contenir que des chiffres" )
-     * @ORM\Column(name="surname", type="string", length=255, nullable=true)
-     */
-    private $surname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
-     * @Assert\Regex(pattern = "/^[a-zA-Z]+$/", match=true,  message = "Le téléphone ne doit contenir que des chiffres" )
-     */
-    private $firstname;
-
-    /**
-     * @var integer
-     * @ORM\Column(name="phone", type="integer", nullable=true)
-     * @Assert\Length(max = "14" , maxMessage = "Le numéro ne peut contenir que 14 chiffres.")
-     * @Assert\Regex(pattern = "/[0-9]/", message = "Le téléphone ne doit contenir que des chiffres" )
-     */
-    private $phone;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="showphone", type="boolean")
-     */
-    private $showphone;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     * @Assert\Regex("/^\w+/")
-     */
-    private $description;
     
 
     public function __construct()

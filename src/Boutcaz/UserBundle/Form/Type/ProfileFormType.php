@@ -37,8 +37,7 @@ class ProfileFormType extends BaseType
 														  'property' 	   		=> 'type',
 														  'label' 		   		=> 'Status:',
 														  'expanded' 	   		=> false, 
-														  'multiple' 	   		=> false
-														  ))											   
+														  'multiple' 	   		=> false))											   
 				->add('current_password','password',array(
 														   'label' 				    => 'form.current_password',
 												           'translation_domain' 	=> 'FOSUserBundle',
@@ -47,15 +46,13 @@ class ProfileFormType extends BaseType
 												           'attr'					=> array('class' => 'signup')
 														   ))
         		->add('surname', 'text' , array('required' => FALSE, 'attr' => array('class' 			=> 'login',
-            																	 'placeholder' 		=> 'Prénom',
-            																	 'invalid_message'  => 'On teste')))
+            																	 'placeholder' 		=> 'Prénom')))
             																	 
 	            ->add('firstname', 'text' , array('required' => FALSE, 'attr' => array('class' 			=> 'login',
-	            																	 'placeholder' 		=> 'Nom')))
+	            																	   'placeholder' 	=> 'Nom')))
 	            
-	            ->add('phone', 'number' , array('required' => FALSE, 'invalid_message'=> 'Le numéro ne peut contenir que des chiffres','attr' => array('class' 		=> 'login',
-	            																																	  'placeholder'	=> 'Ex: 0102030405',
-	            																    )))
+	            ->add('phone', 'text' , array('required' => FALSE,  'attr' => array('class' 		    => 'login',
+	            																	  'placeholder'     => 'Ex: 0102030405')))
 	            ->add('showphone','choice', array( 'choices' => array(
 							                							'1' => 'Maquer mon numéro',
 																		'2' => 'Toujours afficher mon numéro')))

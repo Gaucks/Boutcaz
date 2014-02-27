@@ -1,0 +1,13 @@
+Boutcaz\UserBundle\Entity\User:
+    properties:
+        surname:
+            - Length: { min:3 }
+            - Regex:  { pattern: "/^[a-zA-Z]+$/", message:"- Le prénom ne peut contenir que des lettres." }
+        firstname:
+            - Length: { min:3 }
+            - Regex:  { pattern: "/^[a-zA-Z]+$/", message:"- Le nom de famille ne peut contenir que des lettres." }
+        phone:
+            - Length: { min: 10 }
+            - Regex:  { pattern: "/[0-9]/",       message:"- Le téléphone ne doit contenir que des chiffres" }
+        description:
+            - Regex: { pattern: "/^\w+/",         message:"- Un message." }

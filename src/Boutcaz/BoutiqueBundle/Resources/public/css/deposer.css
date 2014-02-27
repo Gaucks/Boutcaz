@@ -79,7 +79,7 @@
 				}
 				
 				#dep_head input[type="text"].annonce_tarif{
-					width: 60px;
+					width: 200px;
 					height: 20px;
 					padding: 5px 10px;
 					background: #f0f0f0;
