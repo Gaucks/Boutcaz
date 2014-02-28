@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser
 {
 
-	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -23,16 +22,19 @@ class User extends BaseUser
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $surname;
 
     /**
      * @var string
+     * @ORM\Column(type="string")
      */
     private $firstname;
 
     /**
-     * @var integer
+     * @var string
+     * @ORM\Column(type="string")
      */
     private $phone;
 

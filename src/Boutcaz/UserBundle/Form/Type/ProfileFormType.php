@@ -57,7 +57,7 @@ class ProfileFormType extends BaseType
 							                							'1' => 'Maquer mon numéro',
 																		'2' => 'Toujours afficher mon numéro')))
 																		
-	            ->add('description', 'textarea' , array('required' => FALSE, 'attr' => array('class' => 'login')))
+	            ->add('description', 'textarea' , array('required' => FALSE, 'attr' => array('class' => 'login', 'placeholder'     => 'Une description de votre proile')))
 	            
 	            ->add('departement', 		'entity',    	array('required' => FALSE,'class' 	        => 'BoutiqueBundle:Departement',
 															   'property' 	   		=> 'departement',

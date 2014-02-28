@@ -1,0 +1,5 @@
+Boutcaz\BoutiqueBundle\Entity\Annonce:
+    properties:
+        titre:
+            - Length: { min:3 }
+            - Regex:  { pattern: "/^[a-zA-Z0-9àáâãäåòóôõöøèéêëçìíîïùúûüÿñ -]+$/", message:"- Votre titre comporte des caractéres interdits" }

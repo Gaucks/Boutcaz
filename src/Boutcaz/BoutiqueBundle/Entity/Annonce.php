@@ -49,8 +49,6 @@ class Annonce
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
-     * @Assert\Length(min = "4" , minMessage = "Votre titre doit comporter au moins 4 caractères.")
-     * @Assert\Regex(pattern = "/^[a-zA-Z0-9àáâãäåòóôõöøèéêëçìíîïùúûüÿñ -]+$/", message = "Le titre ne doit contenir que des chiffres ou des lettres" )
      */
     private $titre;
 
@@ -58,8 +56,6 @@ class Annonce
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
-     * @Assert\NotBlank(message = "4 caractères minimum")
-     * @Assert\Length(min = "10" , minMessage = "Votre description doit comporter au moins 10 caractères.")
      */
     private $description;
     
