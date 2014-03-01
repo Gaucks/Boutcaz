@@ -17,14 +17,14 @@ use Symfony\Component\Validator\ExecutionContextInterface;
  */
 class Annonce
 {   
-
-	// MEMBRE OU INVITÉ ?
-	/**
-    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\AuteurType")
-    */
-	private $auteurtype;
 	
-	// DANS QUEL CATEGORIE METTE L'ANNONCE
+	// Qui est l'auteur
+	/**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\UserBundle\Entity\User")
+    */
+	private $user;
+	
+	// DANS QUEL CATEGORIE EST L'ANNONCE
 	/**
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Categorie")
     */
@@ -35,6 +35,21 @@ class Annonce
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Proposition")
     */
 	private $proposition;
+	
+	/**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Region")
+    */
+	private $region;
+	
+	/**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Departement")
+    */
+	private $departement;
+	
+	/**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Ville")
+    */
+	private $ville;
 	
     /**
      * @var integer
@@ -63,7 +78,6 @@ class Annonce
      * @var integer
      *
      * @ORM\Column(name="tarif", type="integer", nullable=true)
-     * @Assert\Regex(pattern= "/[0-9]/", message = "Le tarif ne peut être écrit qu'en chiffre." )
      */
     private $tarif;
 
@@ -73,13 +87,6 @@ class Annonce
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="auteurid", type="integer", nullable=FALSE)
-     */
-	private $auteurid;
 	
 	/**
      * @var \DateTime
@@ -94,6 +101,13 @@ class Annonce
     * @ORM\Column(name="published", type="boolean")
     */
     private $published;
+    
+    /**
+    * @var string
+    *
+    * @ORM\Column(name="ipadress")
+    */
+    private $ipadress;
 
 
 	public function __construct()
@@ -101,11 +115,10 @@ class Annonce
     	$this->date  = new \DateTime();
 		$this->updated  = new \DateTime();
 		$this->published  = TRUE;
-
 	}
 	
 	 public function titreValide(ExecutionContextInterface $context)
-    {
+     {
 	    $mots_interdits = array('Vend', 'Vends', 'Achete', 'achete', 'donne');
 	    
 	    // On vérifie que le contenu ne contient pas l'un des mots
@@ -118,8 +131,9 @@ class Annonce
 		}
 	    
 	    
-    }
-    
+     }
+
+
     /**
      * Get id
      *
@@ -223,29 +237,6 @@ class Annonce
     }
 
     /**
-     * Set auteurid
-     *
-     * @param integer $auteurid
-     * @return Annonce
-     */
-    public function setAuteurid($auteurid)
-    {
-        $this->auteurid = $auteurid;
-
-        return $this;
-    }
-
-    /**
-     * Get auteurid
-     *
-     * @return integer 
-     */
-    public function getAuteurid()
-    {
-        return $this->auteurid;
-    }
-
-    /**
      * Set updated
      *
      * @param \DateTime $updated
@@ -269,26 +260,72 @@ class Annonce
     }
 
     /**
-     * Set auteurtype
+     * Set published
      *
-     * @param \Boutcaz\BoutiqueBundle\Entity\AuteurType $auteurtype
+     * @param boolean $published
      * @return Annonce
      */
-    public function setAuteurtype(\Boutcaz\BoutiqueBundle\Entity\AuteurType $auteurtype = null)
+    public function setPublished($published)
     {
-        $this->auteurtype = $auteurtype;
+        $this->published = $published;
 
         return $this;
     }
 
     /**
-     * Get auteurtype
+     * Get published
      *
-     * @return \Boutcaz\BoutiqueBundle\Entity\AuteurType 
+     * @return boolean 
      */
-    public function getAuteurtype()
+    public function getPublished()
     {
-        return $this->auteurtype;
+        return $this->published;
+    }
+
+    /**
+     * Set ipadress
+     *
+     * @param string $ipadress
+     * @return Annonce
+     */
+    public function setIpadress($ipadress)
+    {
+        $this->ipadress = $ipadress;
+
+        return $this;
+    }
+
+    /**
+     * Get ipadress
+     *
+     * @return string 
+     */
+    public function getIpadress()
+    {
+        return $this->ipadress;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Boutcaz\UserBundle\Entity\User $user
+     * @return Annonce
+     */
+    public function setUser(\Boutcaz\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Boutcaz\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
@@ -338,25 +375,71 @@ class Annonce
     }
 
     /**
-     * Set published
+     * Set region
      *
-     * @param boolean $published
+     * @param \Boutcaz\BoutiqueBundle\Entity\Region $region
      * @return Annonce
      */
-    public function setPublished($published)
+    public function setRegion(\Boutcaz\BoutiqueBundle\Entity\Region $region = null)
     {
-        $this->published = $published;
+        $this->region = $region;
 
         return $this;
     }
 
     /**
-     * Get published
+     * Get region
      *
-     * @return boolean 
+     * @return \Boutcaz\BoutiqueBundle\Entity\Region 
      */
-    public function getPublished()
+    public function getRegion()
     {
-        return $this->published;
+        return $this->region;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Departement $departement
+     * @return Annonce
+     */
+    public function setDepartement(\Boutcaz\BoutiqueBundle\Entity\Departement $departement = null)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Departement 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Ville $ville
+     * @return Annonce
+     */
+    public function setVille(\Boutcaz\BoutiqueBundle\Entity\Ville $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Ville 
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

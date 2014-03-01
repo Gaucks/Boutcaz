@@ -34,6 +34,7 @@ class RegistrationFormType extends BaseType
 														  'multiple' 	   		=> false
 														  )
         	    )
+        	    ->add('isguest', 'hidden', array('data' => '0'))
 	        	->remove('surname')
 	            ->remove('firstname')
 	            ->remove('phone')

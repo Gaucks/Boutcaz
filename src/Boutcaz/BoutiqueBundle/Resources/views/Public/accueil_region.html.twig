@@ -7,7 +7,8 @@
 		<div id="content_annonce_left">
 		
 {# Début des conteneurs des annonces #}
-   	    
+
+   	    {% for annonce in annonces %}
    	    <div class="sp_box">
 						
 						<div class="sp_box_annonce_img">
@@ -21,25 +22,25 @@
 						</div>
 						
 						<div class="sp_box_annonce">
-							<h3 class="title"><a href="{{ path('show_homepage') }}" class="annonce_title">Un titre d'annonce plutot simpa</a></h3>
+							<h3 class="title"><a href="{{ path('show_homepage') }}" class="annonce_title">{{ annonce.titre }}</a></h3>
 							<ul class="sp_top_infos">
-								<li class="sp_top_info"><p class="infos">Par</p> Quelqu'un</li>
-								<li class="sp_top_info"><p class="infos">Le </p> 21/01/14</li>
-								<li class="sp_top_info"><p class="infos">Dans</p> Catégorie</li>
+								<li class="sp_top_info"><p class="infos">Par</p> {{ annonce.user.username }}</li>
+								<li class="sp_top_info"><p class="infos">Le </p> {{ annonce.date|date('d/m') }}</li>
+								<li class="sp_top_info"><p class="infos">Dans</p> {{ annonce.categorie.categorie }}</li>
 							</ul>
-							<p class="location">A Vinon sur verdon dans le ( 83 )</p>	
+							<p class="location">A {{ annonce.ville.ville }} dans le ( 83 )</p>	
 						</div>
 						
 						<div class="sp_box_annonce_bottom_region">
 						<ul class="sp_box_annonce_bottom_ul">
-							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/annonce_ico.png') }}" class="ico" alt="Nombre d'annonce" /> <span class="tarif">1800 euros </span></li>
+							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/annonce_ico.png') }}" class="ico" alt="Nombre d'annonce" /> <span class="tarif">{{ annonce.tarif }} euros </span></li>
 							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/boutique_ico.png') }}" class="ico" alt="Nombre d'annonce" /> Boutique</li>
 							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/picture_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 3 images</li>
 						</ul>
 					 </div>
 					
    	    </div>
-   	    
+   	    {% endfor %}
    	    <div class="sp_box">
 						
 						<div class="sp_box_annonce_img">

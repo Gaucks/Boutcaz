@@ -59,60 +59,55 @@ class BoutiqueController extends Controller
 			if ($form_annonce->isValid()) {
 				
 				// On récupere les parametres de sécurité
+				
+				$ip = $request->server->get('REMOTE_ADDR');
 				$securityContext = $this->container->get('security.context');
 		
 					// L'utilisateur est connecté donc on récupère ses informations
 					if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
-					
+						
 						$user = $securityContext->getToken()->getUser();
 						
-						// On crée l'objet Guest en fonction des données utilisateur connecté
-						$guest->setPseudo($user->getUsername());
-						$guest->setEmail($user->getEmail());
-						$guest->setPassword($user->getPassword());
-						$guest->setType($form_guest->getData()->getType(2));
-						
-						// On enregistre le Guest
-						$em->persist($guest);
-						$em->flush();
-						
-						$annonce->setAuteurid($user->getId());
-						
-						// On met le type d'utilisateur à Membre
-						$annonce->setAuteurType($em->getRepository('BoutiqueBundle:AuteurType')->findOneByid(1) );
-						
+						$annonce->setUser($user);
+						$annonce->setIpadress($ip);
+						$annonce->setDepartement($user->getDepartement());
+						$annonce->setRegion($user->getRegion());
+						$annonce->setVille($user->getVille());
 					}
 					
-					// L'UTILISATEUR N'EST PAS CONNECTÉ ON FAIT CE QUI SUIT :
-						if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') == FALSE  ){
-							
-							// Sinon l'utilisateur est un invité	 
-							if ($form_guest->isValid()){
-							// On crée l'objet Guest en fonction du formulaire transmis
-							$guest->setPseudo($form_guest->getData()->getPseudo());
-							$guest->setEmail($form_guest->getData()->getEmail());
-							$guest->setPassword($form_guest->getData()->getPassword());
-							$guest->setType($form_guest->getData()->getType());
-							$guest->setVille($form_guest->getData()->getVille());
-							
-							// On enregistre le Guest
-							$em->persist($guest);
-							$em->flush();
-							
-							
-							// On met le type d'utilisateur à invité
-							$annonce->setAuteurType($em->getRepository('BoutiqueBundle:AuteurType')->findOneByid(2) );
-							// On met la valeur de Auteurid en fonction du mode d'envoi ( connecté ou non ) 	
-							$annonce->setAuteurid($guest->getId());	
-							}
-							else{
-								return $this->render('BoutiqueBundle:Public:deposer.html.twig', array(  'form_annonce' 	=> $form_annonce->createView(), 
-																										'form_guest' 	=> $form_guest->createView(),
-																										'form_image' 	=> $form_image->createView(),
-																										'entete'		=> $entete  ));
-								 }
-						
-						}
+					/*
+// L'UTILISATEUR N'EST PAS CONNECTÉ ON FAIT CE QUI SUIT :
+if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') == FALSE  ){
+
+// Sinon l'utilisateur est un invité	 
+if ($form_guest->isValid()){
+// On crée l'objet Guest en fonction du formulaire transmis
+$guest->setPseudo($form_guest->getData()->getPseudo());
+$guest->setEmail($form_guest->getData()->getEmail());
+$guest->setPassword($form_guest->getData()->getPassword());
+$guest->setType($form_guest->getData()->getType());
+$guest->setVille($form_guest->getData()->getVille());
+
+// On enregistre le Guest
+$em->persist($guest);
+$em->flush();
+
+
+// On met le type d'utilisateur à invité
+$annonce->setAuteurType($em->getRepository('BoutiqueBundle:AuteurType')->findOneByid(2) );
+// On met la valeur de Auteurid en fonction du mode d'envoi ( connecté ou non ) 	
+$annonce->setAuteurid($guest->getId());
+$annonce->setIpadress($ip);
+}
+else{
+	return $this->render('BoutiqueBundle:Public:deposer.html.twig', array(  'form_annonce' 	=> $form_annonce->createView(), 
+																			'form_guest' 	=> $form_guest->createView(),
+																			'form_image' 	=> $form_image->createView(),
+																			'entete'		=> $entete  ));
+	 }
+
+}
+*/
 					
 				
 				// On enregistre le tout
@@ -139,12 +134,14 @@ class BoutiqueController extends Controller
 	
     public function regionAction($slug)
     {
-    	
-    	$em 	= $this->getDoctrine();
+
+    	$em = $this->getDoctrine();
     	
     	$region = $em->getManager()->getRepository('BoutiqueBundle:Region')->findOneBySlug($slug);
     	
-        return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region, 'slug' => $slug));
+    	$annonces = $em->getManager()->getRepository('BoutiqueBundle:Annonce')->findAll();
+    	
+        return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region, 'slug' => $slug, 'annonces' => $annonces));
     }
     
     public function showAction()
