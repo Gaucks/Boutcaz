@@ -134,14 +134,12 @@ else{
 	
     public function regionAction($slug)
     {
-
     	$em = $this->getDoctrine();
     	
     	$region = $em->getManager()->getRepository('BoutiqueBundle:Region')->findOneBySlug($slug);
-    	
     	$annonces = $em->getManager()->getRepository('BoutiqueBundle:Annonce')->findAll();
     	
-        return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region, 'slug' => $slug, 'annonces' => $annonces));
+        return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region->getRegion() ,'slug' => $slug, 'annonces' => $annonces));
     }
     
     public function showAction()

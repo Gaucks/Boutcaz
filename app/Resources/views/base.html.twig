@@ -28,9 +28,9 @@
     				<a href="{{ path('boutique_homepage') }}" class="region_title" alt="Logo Boutcaz" >
     					<img src="{{ asset('bundles/boutique/images/logo2.png') }}" alt="Logo Boutcaz "/>
     					
-						{% if entete is defined and entete != false %}
+						{% if region is defined %}
 						 
-							{{ region.region }}
+							{{ region }}
 						
 						{% endif %}
 					</a>
