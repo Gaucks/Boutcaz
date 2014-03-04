@@ -16,17 +16,14 @@ use Boutcaz\BoutiqueBundle\Form\ImageType;
 
 class BoutiqueController extends Controller
 {
+
     public function indexAction()
     {
     	
     	//Création du formulaire de recherche
     	$form_recherche = $this->createForm(new rechercheType());
     	
-    	$em = $this->getDoctrine();
-    	
-    	$regions = $em->getRepository('BoutiqueBundle:Region')->findBy(array(), null,  9);
-    	
-        return $this->render('BoutiqueBundle:Public:accueil.html.twig', array('recherche' => $form_recherche->createView(), 'regions' => $regions));
+    	return $this->render('BoutiqueBundle:Public:accueil.html.twig', array('recherche' => $form_recherche->createView(), 'regions' => $this->regionRepository()));
     }
     
     public function deposerAction()
@@ -59,20 +56,13 @@ class BoutiqueController extends Controller
 			if ($form_annonce->isValid()) {
 				
 				// On récupere les parametres de sécurité
-				
-				$ip = $request->server->get('REMOTE_ADDR');
 				$securityContext = $this->container->get('security.context');
 		
 					// L'utilisateur est connecté donc on récupère ses informations
 					if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
 						
-						$user = $securityContext->getToken()->getUser();
-						
-						$annonce->setUser($user);
-						$annonce->setIpadress($ip);
-						$annonce->setDepartement($user->getDepartement());
-						$annonce->setRegion($user->getRegion());
-						$annonce->setVille($user->getVille());
+						//On passe par la fonction hydrate pour enregistrer les données supplémentaires.
+						$this->hydrate($annonce, $request->server->get('REMOTE_ADDR'), $securityContext->getToken()->getUser());
 					}
 					
 					/*
@@ -111,8 +101,7 @@ else{
 					
 				
 				// On enregistre le tout
-		        $em->persist($annonce);
-		        $em->flush();
+		        $this->saveBdd($annonce);
 		        
 		        // Concernant l'image transmise
 				 if( ($form_image->getData()->getFile() != NULL) AND ($form_image->isValid()) )
@@ -167,4 +156,32 @@ else{
     {
 	    return $this->render('BoutiqueBundle:Template:navigation.html.twig');
     }
+    
+    protected function hydrate($annonce, $ip,  $user )
+	{
+		$annonce->setUser($user);
+		$annonce->setIpadress($ip);
+		$annonce->setDepartement($user->getDepartement());
+		$annonce->setRegion($user->getRegion());
+		$annonce->setVille($user->getVille());
+		
+		return $annonce;
+	}
+	
+	protected function saveBdd($annonce)
+	{
+		$em = $this->getDoctrine();
+		
+		$em->persist($annonce);
+		$em->flush();
+	}
+	
+	protected function regionRepository()
+	{
+		$em = $this->getDoctrine();
+    	
+    	$region = $em->getRepository("BoutiqueBundle:Region")->findBy(array(), null,  9);
+    	
+    	return $region;
+	}
 }
