@@ -4,7 +4,11 @@ boutique_homepage:
 
 region_homepage:
     pattern:  /region/{slug}
-    defaults: { _controller: BoutiqueBundle:Boutique:region }  
+    defaults: { _controller: BoutiqueBundle:Boutique:region }
+
+region_check:
+    pattern:  /region_check
+    defaults: { _controller: BoutiqueBundle:Boutique:userRegion }   
 
 show_homepage:
     pattern:  /show

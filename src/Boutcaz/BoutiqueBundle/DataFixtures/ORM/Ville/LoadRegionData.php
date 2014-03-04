@@ -25,7 +25,7 @@ class LoadRegionData extends AbstractFixture implements OrderedFixtureInterface
 			$alsace 				= $this->createRegion('Alsace');
 			$picardie 				= $this->createRegion('Picardie');
 			$franche_comte  		= $this->createRegion('Franche-Comté');
-			$limousin 				= $this->createRegion('limousin');
+			$limousin 				= $this->createRegion('Limousin');
 			$pays_de_la_loire 		= $this->createRegion('Pays de la Loire');
 			$nord_pas_de_calais 	= $this->createRegion('Nord-Pas-de-Calais');
 			$auvergne 				= $this->createRegion('Auvergne');

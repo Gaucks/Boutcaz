@@ -121,12 +121,25 @@ else{
 	}
 	
 	
+	public function userRegionAction()
+	{
+		$securityContext = $this->container->get('security.context');
+		
+		// L'utilisateur est connecté donc on récupère ses informations
+		if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+			
+			$slug = $securityContext->getToken()->getUser();
+		}
+					
+		return $this->redirect($this->generateUrl('region_homepage', array('slug' => $slug->getRegion()->getSlug()) ));
+	}
+	
     public function regionAction($slug)
     {
-    	$em = $this->getDoctrine();
+    	$em = $this->getDoctrine()->getManager();
     	
-    	$region = $em->getManager()->getRepository('BoutiqueBundle:Region')->findOneBySlug($slug);
-    	$annonces = $em->getManager()->getRepository('BoutiqueBundle:Annonce')->findAll();
+    	$region = $em->getRepository('BoutiqueBundle:Region')->findOneBySlug($slug);
+    	$annonces = $em->getRepository('BoutiqueBundle:Annonce')->findAll();
     	
         return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region->getRegion() ,'slug' => $slug, 'annonces' => $annonces));
     }
