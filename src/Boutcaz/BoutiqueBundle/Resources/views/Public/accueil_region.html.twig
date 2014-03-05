@@ -12,7 +12,11 @@
    	    <div class="sp_box">
 						
 						<div class="sp_box_annonce_img">
+						{% if annonce.image != NULL %}
+						    <img src="{{ asset('uploads/img/' ~ annonce.image.url) }}" class="img_annonce" alt="{{ annonce.image.alt }}" />
+						{% else %}
 							<img src="{{ asset('bundles/Boutique/images/tablette.png') }}" class="img_annonce" alt="Image de l'annonce" />
+						{% endif %}
 						</div>
 						
 						<div class="sp_box_img">
@@ -33,7 +37,9 @@
 						
 						<div class="sp_box_annonce_bottom_region">
 						<ul class="sp_box_annonce_bottom_ul">
-							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/annonce_ico.png') }}" class="ico" alt="Nombre d'annonce" /> <span class="tarif">{{ annonce.tarif }} euros </span></li>
+							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/annonce_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 
+								<span class="tarif">{% if annonce.tarif != NULL %} {{ annonce.tarif }} euros {% else %} Inconnu {% endif %}</span>
+							</li>
 							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/boutique_ico.png') }}" class="ico" alt="Nombre d'annonce" /> Boutique</li>
 							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/picture_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 3 images</li>
 						</ul>
@@ -172,9 +178,10 @@
 							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/picture_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 3 images</li>
 						</ul>
 					 </div>
-#} {# ATTENTION : Contenu de développement à supprimer #}
-   	   				
-   	    </div> {# Fin des conteneurs des annonces #}
+					 </div> {# Fin des conteneurs des annonces #} 
+{# ATTENTION : Contenu de développement à supprimer #}
+
+	   	      	   				
 
 
 	</div> {# Fin du conteneur de gauche #}

@@ -31,6 +31,7 @@
     				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     				
     					<p class="connect">
+    						<a href="{{ path('region_homepage', { 'slug':app.user.region.slug} ) }}" class="" alt="" />{{ app.user.region.region }}</a> |
     						<a href="{{ path('fos_user_security_logout') }}" class="signup" alt="Déposer une annonce" >Déconnexion</a> |
     						<a href="{{ path('fos_user_profile_edit') }}" class="signup" alt="Déposer une annonce" >{{ app.user.username }}</a>
     					</p>

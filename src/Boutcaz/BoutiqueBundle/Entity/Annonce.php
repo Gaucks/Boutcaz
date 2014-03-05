@@ -26,9 +26,9 @@ class Annonce
 	
 	// Lien vers l'image en relation
 	/**
-    * @ORM\OneToMany(targetEntity="Image", mappedBy="annonce", cascade={"remove", "persist"}))
+    * @ORM\OneToOne(targetEntity="Image", cascade={"remove", "persist"}))
     */
-	private $images;
+	private $image;
 	
 	// DANS QUEL CATEGORIE EST L'ANNONCE
 	/**
@@ -120,7 +120,6 @@ class Annonce
     	$this->date  = new \DateTime();
 		$this->updated  = new \DateTime();
 		$this->published  = TRUE;
-		$this->images = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
 	 public function titreValide(ExecutionContextInterface $context)
@@ -449,36 +448,27 @@ class Annonce
         return $this->ville;
     }
 
+
     /**
-     * Add images
+     * Set image
      *
-     * @param \Boutcaz\BoutiqueBundle\Entity\Image $images
+     * @param \Boutcaz\BoutiqueBundle\Entity\Image $image
      * @return Annonce
      */
-    public function addImage(\Boutcaz\BoutiqueBundle\Entity\Image $images)
+    public function setImage(\Boutcaz\BoutiqueBundle\Entity\Image $image = null)
     {
-        $this->images[] = $images;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Remove images
+     * Get image
      *
-     * @param \Boutcaz\BoutiqueBundle\Entity\Image $images
+     * @return \Boutcaz\BoutiqueBundle\Entity\Image 
      */
-    public function removeImage(\Boutcaz\BoutiqueBundle\Entity\Image $images)
+    public function getImage()
     {
-        $this->images->removeElement($images);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImages()
-    {
-        return $this->images;
+        return $this->image;
     }
 }

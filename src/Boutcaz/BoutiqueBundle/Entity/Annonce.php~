@@ -24,12 +24,6 @@ class Annonce
     */
 	private $user;
 	
-	// Lien vers l'image en relation
-	/**
-    * @ORM\OneToMany(targetEntity="Image", mappedBy="annonce", cascade={"remove", "persist"}))
-    */
-	private $images;
-	
 	// DANS QUEL CATEGORIE EST L'ANNONCE
 	/**
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Categorie")
@@ -120,7 +114,6 @@ class Annonce
     	$this->date  = new \DateTime();
 		$this->updated  = new \DateTime();
 		$this->published  = TRUE;
-		$this->images = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
 	 public function titreValide(ExecutionContextInterface $context)

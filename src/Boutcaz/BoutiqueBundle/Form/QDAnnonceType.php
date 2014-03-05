@@ -51,10 +51,7 @@ class QDAnnonceType extends AnnonceType
 																	   					 'class' => 'radio') 
 															 )
 					  )
-			    ->add('images', 'collection', array('type'         => new QDImageType(),
-                                                     'allow_add'    => true,
-                                                     'allow_delete' => true,
-                                                     'required' => false))
+				->add('image',  new QDImageType)
 	            ->remove('auteurid')
 	            ->remove('date')
 	            ->remove('updated')

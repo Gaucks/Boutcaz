@@ -16,7 +16,6 @@ use Boutcaz\BoutiqueBundle\Form\ImageType;
 
 class BoutiqueController extends Controller
 {
-
     public function indexAction()
     {
     	//Création du formulaire de recherche
@@ -63,8 +62,9 @@ class BoutiqueController extends Controller
 					// L'utilisateur est connecté donc on récupère ses informations
 					if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
 						
+						$user = $securityContext->getToken()->getUser();
 						//On passe par la fonction hydrate pour enregistrer les données supplémentaires.
-						$this->hydrate($annonce, $request->server->get('REMOTE_ADDR'), $securityContext->getToken()->getUser());
+						$this->hydrate($annonce, $request->server->get('REMOTE_ADDR'), $user);
 					}
 					
 					/*
@@ -101,10 +101,11 @@ else{
 }
 */					
 
+
 			// On enregistre le tout
 			$this->saveBdd($annonce);
 			
-			return $this->redirect(($this->generateUrl('boutique_homepage')));			
+			return $this->redirect(($this->generateUrl('region_homepage', array('slug' => $user->getRegion()->getSlug() ))));			
 		}
 	 
 	 }
@@ -141,7 +142,7 @@ else{
     	$em = $this->getDoctrine()->getManager();
     	
     	$region = $em->getRepository('BoutiqueBundle:Region')->findOneBySlug($slug);
-    	$annonces = $em->getRepository('BoutiqueBundle:Annonce')->findAll();
+    	$annonces = $em->getRepository('BoutiqueBundle:Annonce')->findByRegion($region->getId());
     	
         return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region->getRegion() ,'slug' => $slug, 'annonces' => $annonces));
     }
@@ -179,12 +180,15 @@ else{
 		$annonce->setRegion($user->getRegion());
 		$annonce->setVille($user->getVille());
 		
+		// Concernant l'image transmise
+		$annonce->getImage()->upload();
+
 		return $annonce;
 	}
 	
 	protected function saveBdd($annonce)
 	{
-		$em = $this->getDoctrine();
+		$em = $this->getDoctrine()->getEntityManager();
 		
 		$em->persist($annonce);
 		$em->flush();

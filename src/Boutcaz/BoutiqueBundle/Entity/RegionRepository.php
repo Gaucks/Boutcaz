@@ -19,4 +19,5 @@ class RegionRepository extends EntityRepository
 					   
 					   return $query->getQuery()->getResult();
 	}
+	
 }
