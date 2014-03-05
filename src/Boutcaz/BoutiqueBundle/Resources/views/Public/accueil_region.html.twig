@@ -40,8 +40,14 @@
 					 </div>
 					
    	    </div>
+   	    {% else %}
+   	    
+   	    <h3>Désolé, il n'y a pas d'annonce dans cette région</h3>
    	    {% endfor %}
-   	    <div class="sp_box">
+   	    
+   	    
+   	    {#
+<div class="sp_box">
 						
 						<div class="sp_box_annonce_img">
 							<img src="{{ asset('bundles/Boutique/images/pub.jpg') }}" class="img_annonce" alt="Image de l'annonce" />
@@ -166,7 +172,8 @@
 							<li class="sp_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/picture_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 3 images</li>
 						</ul>
 					 </div>
-					
+#} {# ATTENTION : Contenu de développement à supprimer #}
+   	   				
    	    </div> {# Fin des conteneurs des annonces #}
 
 

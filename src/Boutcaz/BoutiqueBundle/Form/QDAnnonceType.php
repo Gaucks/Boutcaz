@@ -39,7 +39,7 @@ class QDAnnonceType extends AnnonceType
 				 											  'empty_value' 	=> 'Choisissez votre catégorie...',
 				 											  'label' 			=> 'Categorie',
 				 											  'attr' 			=> array( 
-				 											  							  'class' => 'annonce')
+				 											  							 'class' => 'annonce')
 				 											  )
 					  )
 			     ->add('proposition', 	'entity',       array('class' 			=> "BoutiqueBundle:Proposition",
@@ -51,6 +51,10 @@ class QDAnnonceType extends AnnonceType
 																	   					 'class' => 'radio') 
 															 )
 					  )
+			    ->add('images', 'collection', array('type'         => new QDImageType(),
+                                                     'allow_add'    => true,
+                                                     'allow_delete' => true,
+                                                     'required' => false))
 	            ->remove('auteurid')
 	            ->remove('date')
 	            ->remove('updated')

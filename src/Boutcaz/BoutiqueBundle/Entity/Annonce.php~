@@ -448,37 +448,4 @@ class Annonce
     {
         return $this->ville;
     }
-
-    /**
-     * Add images
-     *
-     * @param \Boutcaz\BoutiqueBundle\Entity\Image $images
-     * @return Annonce
-     */
-    public function addImage(\Boutcaz\BoutiqueBundle\Entity\Image $images)
-    {
-        $this->images[] = $images;
-
-        return $this;
-    }
-
-    /**
-     * Remove images
-     *
-     * @param \Boutcaz\BoutiqueBundle\Entity\Image $images
-     */
-    public function removeImage(\Boutcaz\BoutiqueBundle\Entity\Image $images)
-    {
-        $this->images->removeElement($images);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
 }

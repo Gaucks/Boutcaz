@@ -158,7 +158,6 @@ class Image
     public function setAnnonce(\Boutcaz\BoutiqueBundle\Entity\Annonce $annonce = null)
     {
         $this->annonce = $annonce;
-        $this->annonce->addImage($this);
 
         return $this;
     }

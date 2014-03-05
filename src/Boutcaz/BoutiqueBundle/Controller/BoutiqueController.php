@@ -19,25 +19,28 @@ class BoutiqueController extends Controller
 
     public function indexAction()
     {
-    	
     	//Création du formulaire de recherche
     	$form_recherche = $this->createForm(new rechercheType());
     	
-    	return $this->render('BoutiqueBundle:Public:accueil.html.twig', array('recherche' => $form_recherche->createView(), 'regions' => $this->regionRepository()));
+    	//Récupération de toutes les régions limité a 9 affichage ( à modifier )
+    	$region = $this->getDoctrine()
+				       ->getRepository("BoutiqueBundle:Region")
+				       ->findBy(array(), null,  9);
+    	
+    	return $this->render('BoutiqueBundle:Public:accueil.html.twig', array(  'recherche'=> $form_recherche->createView(), 
+														    					'regions'  => $region));
     }
     
     public function deposerAction()
     {
-    	$entete = FALSE; /* Retire toutes les entetes */
+    	$entete		= FALSE; /* Retire toutes les entetes */
     	
+		// Création des objets requis
     	$annonce 	= new Annonce;
     	$guest 		= new Guest;		
-		$image 		= new Image;
-		
 		
     	$form_annonce 	= $this->createForm(new QDAnnonceType, $annonce);	 /* On créer le formulaire d'annonce */
     	$form_guest   	= $this->createForm(new QDGuestType, $guest);	 /* On créer le formulaire d'annonce */
-    	$form_image 	= $this->createForm(new ImageType, $image);	/* On créer le formulaire d'images */
     	
     	$request = $this->get('request');
 		
@@ -47,7 +50,6 @@ class BoutiqueController extends Controller
 			// On bind les formulaires
 			$form_annonce->bind($request);
 			$form_guest->bind($request);
-			$form_image->bind($request);
 			
 			$em = $this->getDoctrine()->getManager();
 			
@@ -97,41 +99,41 @@ else{
 	 }
 
 }
-*/
-					
-				
-				// On enregistre le tout
-		        $this->saveBdd($annonce);
-		        
-		        // Concernant l'image transmise
-				 if( ($form_image->getData()->getFile() != NULL) AND ($form_image->isValid()) )
-				 { 	
-				 	$image->upload($annonce);
-					 	
-					$em->persist($image);	 
-					$em->flush();	
-				 }
+*/					
+
+			// On enregistre le tout
+			$this->saveBdd($annonce);
 			
 			return $this->redirect(($this->generateUrl('boutique_homepage')));			
 		}
 	 
 	 }
 		
-		return $this->render('BoutiqueBundle:Public:deposer.html.twig', array('form_annonce' => $form_annonce->createView(), 'form_guest' => $form_guest->createView(),  'form_image' => $form_image->createView(), 'entete'		=> $entete ));
+		return $this->render('BoutiqueBundle:Public:deposer.html.twig', array('form_annonce'  => $form_annonce->createView(), 
+																			  'form_guest'    => $form_guest->createView(),
+																			  'entete'  	  => $entete ));
 	}
 	
-	
-	public function userRegionAction()
+	public function regionCheckAction()
 	{
+		//=======================================================
+		//! Utiliser pour récupérer la région de l'utilisateur, 
+		//!	utilisé lors des redirections des connectés
+		//======================================================
+
 		$securityContext = $this->container->get('security.context');
 		
 		// L'utilisateur est connecté donc on récupère ses informations
 		if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
 			
 			$slug = $securityContext->getToken()->getUser();
+			
+			return $this->redirect($this->generateUrl('region_homepage', array('slug' => $slug->getRegion()->getSlug()) ));
 		}
-					
-		return $this->redirect($this->generateUrl('region_homepage', array('slug' => $slug->getRegion()->getSlug()) ));
+		
+		// On envoi une erreur si il n'est pas connecté
+		throw new \Exception('Quelque chose a mal tourné, vous n\'êtes pas connecté apparemment!');			
+		
 	}
 	
     public function regionAction($slug)
@@ -144,21 +146,20 @@ else{
         return $this->render('BoutiqueBundle:Public:accueil_region.html.twig', array('region' => $region->getRegion() ,'slug' => $slug, 'annonces' => $annonces));
     }
     
-    public function showAction()
+    public function showAction()//Annonce $anonce à rajouter
     {
         return $this->render('BoutiqueBundle:Public:show_annonce.html.twig');
     }
-    
     
     public function signinAction()
     {
         return $this->render('BoutiqueBundle:Public:signin.html.twig');
     }
     
-     public function signupAction()
-    {
-        return $this->render('BoutiqueBundle:Public:signup.html.twig');
-    }
+	public function signupAction()
+	{
+		return $this->render('BoutiqueBundle:Public:signup.html.twig');
+	}
     
     public function footerAction()
     {
@@ -170,7 +171,7 @@ else{
 	    return $this->render('BoutiqueBundle:Template:navigation.html.twig');
     }
     
-    protected function hydrate($annonce, $ip,  $user )
+    protected function hydrate($annonce, $ip, $user)
 	{
 		$annonce->setUser($user);
 		$annonce->setIpadress($ip);
@@ -187,14 +188,5 @@ else{
 		
 		$em->persist($annonce);
 		$em->flush();
-	}
-	
-	protected function regionRepository()
-	{
-		$em = $this->getDoctrine();
-    	
-    	$region = $em->getRepository("BoutiqueBundle:Region")->findBy(array(), null,  9);
-    	
-    	return $region;
 	}
 }

@@ -118,22 +118,27 @@
 {% endif %}		
                <h3 class="annonce_etape">5 - Images & Vidéos </h3>	
 					
-							<div id="dep_picture"> {# Conteneur pour l'identité #}	
+							<div id="dep_picture"> {# Conteneur pour les images #}	
 									
 									{# Le pseudo #}	
 									<label class="label">Photo principal</label>
-									<input type="file" class="file" />
+									 {{ form_widget(form_annonce.images)}}
+									
+									{#
 									<label class="label">Photo 2</label>
 									<input type="file" class="file" />
 									<label class="label">Photo 3</label>
 									<input type="file" class="file" />
+									#}
 									
-							</div> {# Fin du Conteneur pour les catégories #}
+							</div> {# Fin du Conteneur pour les images #}
 							
 						<div id="dep_submit">
 							<input type="submit" value="Créer mon annonce maintenant !" id="submit" />
 						</div>
-						
+				
+				
+				{{ form_rest(form_annonce) }}		
 				{{ form_end(form_annonce) }}
 				</form>
 				
