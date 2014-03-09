@@ -3,6 +3,7 @@
 namespace Boutcaz\BoutiqueBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Departement
@@ -34,6 +35,12 @@ class Departement
      * @ORM\Column(name="Departement", type="string", length=255)
      */
     private $departement;
+    
+    /**
+	* @Gedmo\Slug(fields={"departement"})
+	* @ORM\Column(length=128, unique=true)
+	*/
+	private $slug;
 
     /**
      * @var string
@@ -119,5 +126,28 @@ class Departement
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Departement
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

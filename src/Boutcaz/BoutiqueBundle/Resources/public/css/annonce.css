@@ -3,18 +3,16 @@
 }
 
 #big_picture{
-	width: 500px;
+	width: 480px;
 	background: #f0f0f0;
-	text-align: center;	
+	text-align: center;
+	padding-top: 20px;	
 }
 
 	#uploaded_picture ul#picture{
-		float: right;
+		width: 480px;
+		background: #F0f0f0;
 		display: inline-block;
-		background: #f0f0f0;
-		margin: 0 auto;
-		width: 500px;
-		text-align: center
 	}
 	
 		#uploaded_picture li.picture{
@@ -23,7 +21,7 @@
 			height: 150px;
 			width: 150px;
 			float: left;
-			margin-right: 10px;
+			margin: 0 5px;
 		}
 		
 		#uploaded_picture img.picture{
@@ -32,7 +30,7 @@
 		}
 		
 		#uploaded_picture img#picture_big{
-			max-width: 400px;
+			max-width: 440px;
 			max-height: 400px;
 		}
 

@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Boutcaz Website{% endblock %}</title>
+
         {% stylesheets filter='cssrewrite'
 	        		'bundles/Boutique/css/reset.css'
 	        		'bundles/Boutique/css/base.css'
@@ -20,8 +21,18 @@
     </head>
     <body>
     
-{# Le header #}    
+{# Flashmessage #}    
 
+	{% block flashmessage %}
+		
+		    {% include "BoutiqueBundle:Template:flashmessage.html.twig" %}
+	
+	{% endblock %}
+
+{# Fin du Flashmessage #} 
+
+
+{# Le header #} 
     	<div id="header">
     		<div id="header_box">
     			<div id="site_title">
@@ -122,6 +133,11 @@
         {% endblock footer%}
         
          </div>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        	{% javascripts 'bundles/Boutique/js/jquery-2.1.0.js' 'bundles/Boutique/js/flashMessage.js' %}
+	    	<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+		
+        {% endblock %}
     </body>
 </html>

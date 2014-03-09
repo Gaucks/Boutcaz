@@ -1,6 +1,8 @@
 {% extends('::base.html.twig') %}
 
 {% block body %}
+
+	{% for a in annonce %}
 	<div id="content_box">
 		<div id="sponsored">
 			
@@ -13,15 +15,15 @@
 						</div>
 						
 						<div class="show_box_annonce">
-							<h3 class="title">Un titre d'annonce plutot simpa</h3>
-							<span id="tarif">Tarif : 16 000 euros</span>
+							<h3 class="title">{{ a.titre }}</h3>
+							<span id="tarif">Tarif : {% if a.tarif != NULL %} {{ a.tarif }} euros {% else %} Inconnu {% endif %}</span>
 
 							<ul class="sp_top_infos">
-								<li class="sp_top_info"><p class="infos">Par</p> Quelqu'un</li>
-								<li class="sp_top_info"><p class="infos">Le </p> 21/01/14</li>
-								<li class="sp_top_info"><p class="infos">Dans</p> Catégorie</li>
+								<li class="sp_top_info"><p class="infos">Par</p> {{ a.user.username }}</li>
+								<li class="sp_top_info"><p class="infos">Le </p> {{ a.date|date('d/m/Y') }}</li>
+								<li class="sp_top_info"><p class="infos">Dans</p> {{ a.categorie.categorie }}</li>
 							</ul>
-							<p class="location">A Vinon sur verdon dans le ( 83 )</p>
+							<p class="location">A {{ a.ville.ville }} dans le ({{ a.departement.numero }} )</p>
 						
 						
 						</div>
@@ -32,12 +34,17 @@
 				<div id="show_annonce_right">
 					<div id="uploaded_picture">
 					
-						<div id="big_picture"><img src="{{ asset('bundles/Boutique/images/imac.png') }}" id="picture_big" alt="Nombre d'annonce" /></div>
-					
+						<div id="big_picture">
+							{% if a.image.url != NULL %}
+								<img src="{{ asset('uploads/img/' ~ a.image.url) }}" id="picture_big" alt="Image de l'annonce" />
+							{% else %}
+								<img src="{{ asset('uploads/img/default.png') }}" id="picture_big" alt="Image de l'annonce" />
+							{% endif %}
+						</div>
 						<ul id="picture">
-							<li class="picture"><img src="{{ asset('bundles/Boutique/images/imac.png') }}" class="picture" alt="Nombre d'annonce" /></li>
-							<li class="picture"><img src="{{ asset('bundles/Boutique/images/tablette.png') }}" class="picture" alt="Nombre d'annonce" /></li>
-							<li class="picture"><img src="{{ asset('bundles/Boutique/images/pub.jpg') }}" class="picture" alt="Nombre d'annonce" /></li>
+							<li class="picture"><img src="{{ asset('uploads/img/default.png') }}" class="picture" alt="Nombre d'annonce" /></li>
+							<li class="picture"><img src="{{ asset('uploads/img/default.png') }}" class="picture" alt="Nombre d'annonce" /></li>
+							<li class="picture"><img src="{{ asset('uploads/img/default.png') }}" class="picture" alt="Nombre d'annonce" /></li>
 						</ul>
 					</div>
 				</div>
@@ -49,19 +56,7 @@
 				
 					<div id="description">
 
-							<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								 Ut enim ad minim veniam, quis nostrud exercitation..
-								 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								 Ut enim ad minim veniam, quis nostrud exercitation..
-								 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								 Ut enim ad minim veniam, quis nostrud exercitation..
-								 </br>
-								 </br>
-								 </br>
-								 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								 Ut enim ad minim veniam, quis nostrud exercitation..	
-								 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-								 Ut enim ad minim veniam, quis nostrud exercitation..
+							<p class="description">{{ a.description }}
 							</p>
 					</div>
 							
@@ -162,5 +157,5 @@
 				</div>
 				
 	</div>
-
+{% endfor %}
 {% endblock %}

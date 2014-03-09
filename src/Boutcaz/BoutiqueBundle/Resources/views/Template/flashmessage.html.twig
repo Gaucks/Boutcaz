@@ -1,0 +1,16 @@
+{% block flashmessage %}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+		<div id="notice">
+		    <h3 id="message">{{ flashMessage }}</h3>
+		</div>
+	{% endfor %}
+	
+	{% for flashMessage in app.session.flashbag.get('notice_error') %}
+	<div id="notice_error">	
+		  <h3 id="message">{{ flashMessage }}</h3>
+	</div>
+	{% endfor %}
+	
+
+{% endblock %}

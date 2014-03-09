@@ -19,12 +19,12 @@ class Image
 	private $id;
 	
 	/**
-	* @ORM\Column(name="url", type="string", length=255)
+	* @ORM\Column(name="url", type="string", length=255, nullable = true)
 	*/
 	private $url;
 	
 	/**
-	* @ORM\Column(name="alt", type="string", length=255)
+	* @ORM\Column(name="alt", type="string", length=255, nullable = true)
 	*/
 	
 	private $alt;
@@ -37,34 +37,34 @@ class Image
 	
 	public function upload()
 	{
-	// Si jamais il n'y a pas de fichier (champ facultatif)
-	if (null === $this->file) {
-	  return;
-	}
-	
-	// On garde le nom original du fichier de l'internaute
-	$name = $this->file->getClientOriginalName();
-	
-	// On déplace le fichier envoyé dans le répertoire de notre choix
-	$this->file->move($this->getUploadRootDir(), $name);
-	
-	// On sauvegarde le nom de fichier dans notre attribut $url
-	$this->url = $name;
-	
-	// On crée également le futur attribut alt de notre balise <img>
-	$this->alt = $name;
+		// Si jamais il n'y a pas de fichier (champ facultatif)
+		if (null === $this->file) {
+		  return;
+		}
+		
+		// On garde le nom original du fichier de l'internaute
+		$name = $this->file->getClientOriginalName();
+		
+		// On déplace le fichier envoyé dans le répertoire de notre choix
+		$this->file->move($this->getUploadRootDir(), $name);
+		
+		// On sauvegarde le nom de fichier dans notre attribut $url
+		$this->url = $name;
+		
+		// On crée également le futur attribut alt de notre balise <img>
+		$this->alt = $name;
 	}
 	
 	public function getUploadDir()
 	{
-	// On retourne le chemin relatif vers l'image pour un navigateur
-	return 'uploads/img';
+		// On retourne le chemin relatif vers l'image pour un navigateur
+		return 'uploads/img';
 	}
 	
 	protected function getUploadRootDir()
 	{
-	// On retourne le chemin relatif vers l'image pour notre code PHP
-	return __DIR__.'/../../../../web/'.$this->getUploadDir();
+		// On retourne le chemin relatif vers l'image pour notre code PHP
+		return __DIR__.'/../../../../web/'.$this->getUploadDir();
 	}
 
 

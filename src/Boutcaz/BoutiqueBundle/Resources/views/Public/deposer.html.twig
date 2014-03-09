@@ -7,9 +7,9 @@
 		<div id="depose_box">{# Conteneur de depose #}	
 		
 		
-		<form action="{{ path('deposer_homepage') }}" method="post" {{ form_enctype(form_annonce) }}>
+		<form action="{{ path('deposer_homepage') }}" method="post" {{ form_enctype(form) }}>
 		
-		{{ form_start(form_annonce) }}
+		{{ form_start(form) }}
 				<div id="depose_box_left"> {# Conteneur de gauche #}	
 				
 					<h3 class="annonce_etape">1 - Votre annonce</h3>
@@ -17,20 +17,20 @@
 							<div id="dep_head"> {# Conteneur pour le titre , catégorie et la description #}	
 									
 									{# Le titre de l'annonce  #}
-									<div class="error"=>{{ form_errors(form_annonce.titre) }}</div>
-									{{ form_label(form_annonce.titre, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_annonce.titre)}}
+									<div class="error"=>{{ form_errors(form.titre) }}</div>
+									{{ form_label(form.titre, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+									{{ form_widget(form.titre)}}
 
 									
 									{# Le descriptif  #}
-									<div class="error"=>{{ form_errors(form_annonce.description) }}</div>
-									{{ form_label(form_annonce.description, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_annonce.description)}}
+									<div class="error"=>{{ form_errors(form.description) }}</div>
+									{{ form_label(form.description, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+									{{ form_widget(form.description)}}
 									
 									{# Le tarif #}	
-									<div class="error"=>{{ form_errors(form_annonce.tarif) }}</div>
-									{{ form_label(form_annonce.tarif, label|default(null), { 'label_attr': { 'class': 'label_tarif' } }) }}
-									{{ form_widget(form_annonce.tarif)}}
+									<div class="error"=>{{ form_errors(form.tarif) }}</div>
+									{{ form_label(form.tarif, label|default(null), { 'label_attr': { 'class': 'label_tarif' } }) }}
+									{{ form_widget(form.tarif)}}
 									
 									<p class="infos">*Veuillez ne pas inclure "vends, achete ou donne" dans vos titres, le type d'annonce gère cela.</p>
 									
@@ -42,80 +42,20 @@
 							<div id="dep_main"> {# Conteneur pour les catégories #}	
 									
 									{# Le categorie #}	
-									<div class="error"=>{{ form_errors(form_annonce.categorie) }}</div>
-									{{ form_label(form_annonce.categorie, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_annonce.categorie)}}
+									<div class="error"=>{{ form_errors(form.categorie) }}</div>
+									{{ form_label(form.categorie, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+									{{ form_widget(form.categorie)}}
 									
 									{# Le type de proposition #}	
-									<div class="error"=>{{ form_errors(form_annonce.proposition) }}</div>
-									{{ form_label(form_annonce.proposition, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_annonce.proposition)}}
+									<div class="error"=>{{ form_errors(form.proposition) }}</div>
+									{{ form_label(form.proposition, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+									{{ form_widget(form.proposition)}}
 						
 									
 									
 							</div> {# Fin du Conteneur pour les catégories #}
 							
-{% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false  %}							
-				{{ form_start(form_guest) }}			
-					<h3 class="annonce_etape">3 - Vos coordonnées</h3>	
-					
-							<div id="dep_coord"> {# Conteneur pour les catégories #}	
-									
-									{# La ville #}
-									<div class="error"=>{{ form_errors(form_guest.ville) }}</div>
-									{{ form_label(form_guest.ville, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.ville) }}
 
-									{# Le numéro de téléphone #}
-									<div class="error"=>{{ form_errors(form_guest.phone) }}</div>
-									{{ form_label(form_guest.phone, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.phone) }}
-									
-									{# Pro ou particulier #}
-									<div class="error"=>{{ form_errors(form_guest.type) }}</div>
-									{{ form_label(form_guest.type, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.type) }}
-									
-									{# Masquer le numéro #}
-									<div class="error"=>{{ form_errors(form_guest.showphone) }}</div>
-									{{ form_label(form_guest.showphone, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.showphone) }}<label class="radio">Masquer mon numéro</label>
-									
-									
-									
-									
-									
-							</div> {# Fin du Conteneur pour les catégories #}
-							
-							
-				<h3 class="annonce_etape">4 - Votre identité</h3>	
-					
-							<div id="dep_ident"> {# Conteneur pour l'identité #}	
-									
-									{# Le pseudo #}	
-									<div class="error"=>{{ form_errors(form_guest.pseudo) }}</div>
-									{{ form_label(form_guest.pseudo, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.pseudo) }}
-									
-									{# Le mot de passe #}
-									<div class="error"=>{{ form_errors(form_guest.password.first) }}</div>
-									{{ form_label(form_guest.password.first, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.password.first) }}
-									
-									{# La confirmation du mot de passe #}
-									<div class="error"=>{{ form_errors(form_guest.password.second) }}</div>
-									{{ form_label(form_guest.password.second, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.password.second) }}
-									
-									{# Le mail #}
-									<div class="error"=>{{ form_errors(form_guest.email) }}</div>
-									{{ form_label(form_guest.email, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form_guest.email) }}
-									
-							</div> {# Fin du Conteneur pour les catégories #}
-				
-				{{ form_rest(form_guest)}}		
-{% endif %}		
                <h3 class="annonce_etape">5 - Images & Vidéos </h3>	
 					
 							<div id="dep_picture"> {# Conteneur pour les images #}	
@@ -123,7 +63,7 @@
 									{# Le pseudo #}	
 									<label class="label">Photo principal</label>
 									
-									 {{ form_widget(form_annonce.image)}}
+									 {{ form_widget(form.image)}}
 									
 									{#
 									<label class="label">Photo 2</label>
@@ -139,8 +79,8 @@
 						</div>
 				
 				
-				{{ form_rest(form_annonce) }}		
-				{{ form_end(form_annonce) }}
+				{{ form_rest(form) }}		
+				{{ form_end(form) }}
 				</form>
 				
 				

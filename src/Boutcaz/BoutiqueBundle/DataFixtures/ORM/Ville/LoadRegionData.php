@@ -49,34 +49,40 @@ class LoadRegionData extends AbstractFixture implements OrderedFixtureInterface
 			$la_reunion 			= $this->createRegion('La Réunion');
 			$rhone_alpes 			= $this->createRegion('Rhône-Alpes');
 			
-			// Persist regions dans la databaee
+			// Persist regions dans la database
+			
+			// Rangée 1
+			$manager->persist($basse_normandie);
+			$manager->persist($haute_normandie);
+			$manager->persist($picardie);
+			$manager->persist($corse);
+			$manager->persist($paca);
+			$manager->persist($la_reunion);
+			$manager->persist($rhone_alpes);
+			$manager->persist($auvergne);
+			$manager->persist($aquitaine);
+			
+			// Rangée 2
+			$manager->persist($bretagne);
+			$manager->persist($ile_de_france);
+			$manager->persist($alsace);
+			$manager->persist($champagne_ardenne);
+			$manager->persist($poitou_charentes);
+			$manager->persist($guadeloupe);
+			$manager->persist($guyane);
+			$manager->persist($martinique);
+			$manager->persist($mayotte);
+			
+			// Rangée 3
+			$manager->persist($languedoc_roussillon);
 			$manager->persist($bourgogne);
 			$manager->persist($lorraine);
-			$manager->persist($alsace);
 			$manager->persist($picardie);
 			$manager->persist($franche_comte);
 			$manager->persist($limousin);
 			$manager->persist($pays_de_la_loire);
 			$manager->persist($nord_pas_de_calais);
-			$manager->persist($auvergne);
-			$manager->persist($aquitaine);
 			$manager->persist($centre);
-			$manager->persist($bretagne);
-			$manager->persist($ile_de_france);
-			$manager->persist($languedoc_roussillon);
-			$manager->persist($champagne_ardenne);
-			$manager->persist($corse);
-			$manager->persist($guadeloupe);
-			$manager->persist($guyane);
-			$manager->persist($martinique);
-			$manager->persist($mayotte);
-			$manager->persist($basse_normandie);
-			$manager->persist($haute_normandie);
-			$manager->persist($picardie);
-			$manager->persist($poitou_charentes);
-			$manager->persist($paca);
-			$manager->persist($la_reunion);
-			$manager->persist($rhone_alpes);
 
 			
 			$manager->flush();

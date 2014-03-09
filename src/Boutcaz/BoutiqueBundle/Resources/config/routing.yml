@@ -11,7 +11,7 @@ region_check:
     defaults: { _controller: BoutiqueBundle:Boutique:regionCheck }   
 
 show_homepage:
-    pattern:  /show
+    pattern:  /show/{region}/{departement}/{ville}/{id}/{slug}
     defaults: { _controller: BoutiqueBundle:Boutique:show }
 
 deposer_homepage:

@@ -3,6 +3,7 @@
 namespace Boutcaz\BoutiqueBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Ville
@@ -26,7 +27,13 @@ class Ville
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+	
+	/**
+	* @Gedmo\Slug(fields={"ville"})
+	* @ORM\Column(length=128, unique=true)
+	*/
+	private $slug;
+	
     /**
      * @var string
      *
@@ -89,5 +96,28 @@ class Ville
     public function getDepartement()
     {
         return $this->departement;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Ville
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

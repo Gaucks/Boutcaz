@@ -1,7 +1,7 @@
 {% extends('::base.html.twig') %}
 
 {% block body %}
-	
+
 <div id="content_region_box">
 		
 		<div id="content_annonce_left">
@@ -12,10 +12,10 @@
    	    <div class="sp_box">
 						
 						<div class="sp_box_annonce_img">
-						{% if annonce.image != NULL %}
+						{% if annonce.image.url != NULL %}
 						    <img src="{{ asset('uploads/img/' ~ annonce.image.url) }}" class="img_annonce" alt="{{ annonce.image.alt }}" />
 						{% else %}
-							<img src="{{ asset('bundles/Boutique/images/tablette.png') }}" class="img_annonce" alt="Image de l'annonce" />
+							<img src="{{ asset('uploads/img/default.png') }}" class="img_annonce" alt="Image de l'annonce" />
 						{% endif %}
 						</div>
 						
@@ -26,7 +26,7 @@
 						</div>
 						
 						<div class="sp_box_annonce">
-							<h3 class="title"><a href="{{ path('show_homepage') }}" class="annonce_title">{{ annonce.titre }}</a></h3>
+							<h3 class="title"><a href="{{ path('show_homepage', {'region': annonce.region.slug, 'departement': annonce.departement.slug, 'ville': annonce.ville.slug, 'id': annonce.id, 'slug': annonce.slug}) }}" class="annonce_title">{{ annonce.titre }}</a></h3>
 							<ul class="sp_top_infos">
 								<li class="sp_top_info"><p class="infos">Par</p> {{ annonce.user.username }}</li>
 								<li class="sp_top_info"><p class="infos">Le </p> {{ annonce.date|date('d/m') }}</li>
@@ -49,6 +49,7 @@
    	    {% else %}
    	    
    	    <h3>Désolé, il n'y a pas d'annonce dans cette région</h3>
+   	    
    	    {% endfor %}
    	    
    	    

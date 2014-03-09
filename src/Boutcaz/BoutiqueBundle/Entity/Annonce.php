@@ -5,8 +5,9 @@ namespace Boutcaz\BoutiqueBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-// On rajoute ce use pour le context :
+// On rajoute ce use pour le context ( le callback pour le titre ):
 use Symfony\Component\Validator\ExecutionContextInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Annonces
@@ -26,7 +27,7 @@ class Annonce
 	
 	// Lien vers l'image en relation
 	/**
-    * @ORM\OneToOne(targetEntity="Image", cascade={"remove", "persist"}))
+    * @ORM\OneToOne(targetEntity="Image", cascade={"remove", "persist"})
     */
 	private $image;
 	
@@ -72,7 +73,13 @@ class Annonce
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
-
+	
+	/**
+	* @Gedmo\Slug(fields={"titre"})
+	* @ORM\Column(length=250)
+	*/
+	private $slug;
+	
     /**
      * @var string
      *
@@ -132,7 +139,7 @@ class Annonce
 			// La règle est violée, on définit l'erreur et son message
 			// 1er argument : on dit quel attribut l'erreur concerne, ici « contenu »
 			// 2e argument : le message d'erreur
-			$context->addViolationAt('titre', 'Titre invalide car il contient un mot interdit.', array(), null);
+			$context->addViolationAt('titre', 'Veuillez ne pas inclure " vends, achete ou donne " dans votre titre, merci.', array(), null);
 		}
 	    
 	    
@@ -470,5 +477,28 @@ class Annonce
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Annonce
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

@@ -18,6 +18,12 @@ a:hover{ color: #000;    text-decoration: none; }
 
 div.error{ color: red; }
 
+div#notice{ background: #B1C70F; text-align: center; padding: 7px 0; position: absolute; width: 100%; top: 0 }
+div#notice h3#message{ color: white; line-height: 1.5em; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+
+div#notice_error{ background: #e54f47; text-align: center; padding: 7px 0; position: absolute; width: 100%; top: 0 }
+div#notice_error h3#message{ color: white; line-height: 1.5em; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+
 input::-webkit-input-placeholder {
 	font-family: georgia;
 	font-style: italic;
@@ -243,6 +249,33 @@ textarea:-ms-input-placeholder {
 				border-bottom: 3px solid #000;
 				color: #000;
 			}
+			
+			#sub_header_box li.menu_region2{
+				display: inline-block;
+				padding: 10px 15px 5px 15px;
+				border-right: 1px solid #c3c5c6;
+				margin: -5px 0px -5px -5px;
+				border-bottom: 3px solid #FFF;
+			}
+			
+			#sub_header_box li.menu_region2:hover{
+				border-bottom: 3px solid #000;
+				color: #000;
+			}
+			
+			#sub_header_box li.menu_region3{
+				display: inline-block;
+				padding: 10px 15px 5px 15px;
+				border-right: 1px solid #c3c5c6;
+				margin: -5px 0px -5px -5px;
+				border-bottom: 3px solid #FFF;
+			}
+			
+			#sub_header_box li.menu_region3:hover{
+				border-bottom: 3px solid #000;
+				color: #000;
+			}
+			
 
 
 #header_center_search{
