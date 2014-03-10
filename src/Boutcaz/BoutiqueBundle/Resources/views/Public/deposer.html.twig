@@ -20,7 +20,6 @@
 									<div class="error"=>{{ form_errors(form.titre) }}</div>
 									{{ form_label(form.titre, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
 									{{ form_widget(form.titre)}}
-
 									
 									{# Le descriptif  #}
 									<div class="error"=>{{ form_errors(form.description) }}</div>
@@ -40,6 +39,13 @@
 					
 					
 							<div id="dep_main"> {# Conteneur pour les catégories #}	
+									
+									{% if form.departement is defined %}
+									{# Le département  #}
+									<div class="error"=>{{ form_errors(form.departement) }}</div>
+									{{ form_label(form.departement, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+									{{ form_widget(form.departement)}}
+									{% endif %}
 									
 									{# Le categorie #}	
 									<div class="error"=>{{ form_errors(form.categorie) }}</div>

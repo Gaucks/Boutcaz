@@ -6,14 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Boutcaz\BoutiqueBundle\Entity\Annonce;
-use Boutcaz\BoutiqueBundle\Entity\Guest;
 use Boutcaz\BoutiqueBundle\Entity\Image;
 use Boutcaz\BoutiqueBundle\Entity\AuteurType;
 
-use Boutcaz\BoutiqueBundle\Form\QDGuestType;
 use Boutcaz\BoutiqueBundle\Form\QDAnnonceType;
 use Boutcaz\BoutiqueBundle\Form\RechercheType;
-use Boutcaz\BoutiqueBundle\Form\ImageType;
 
 use Boutcaz\BoutiqueBundle\Form\Handler\AnnonceHandler;
 
@@ -47,11 +44,11 @@ class BoutiqueController extends Controller
 		// Création des objets requis
     	$annonce        = new Annonce;
 		
-    	$form           = $this->createForm(new QDAnnonceType, $annonce);	 /* On créer le formulaire d'annonce */
-
-    	$request       	= $this->get('request'); // La requete
+		$request       	= $this->get('request'); // La requete
 		$entityManager  = $this->getDoctrine()->getManager(); // L'entityManager
 		$user           = $this->container->get('security.context')->getToken()->getUser(); // Les données de l'utilisateurs
+		
+    	$form           = $this->createForm(new QDAnnonceType($this->container->get('security.context')), $annonce);	 /* On créer le formulaire d'annonce */
 		
 		$formHandler = new AnnonceHandler($form, $request, $entityManager, $annonce, $user); // On transmet tout au AnnonceHandler
 		
@@ -66,42 +63,7 @@ class BoutiqueController extends Controller
 																			   'departement' => $user->getDepartement()->getslug(), 
 																			   'ville' 		 => $user->getVille()->getslug(), 
 																			   'id' 		 => $annonce->getId(), 
-																			   'slug' 		 => $annonce->getSlug()))));
-			
-			/*
-// L'UTILISATEUR N'EST PAS CONNECTÉ ON FAIT CE QUI SUIT :
-if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') == FALSE  ){
-
-// Sinon l'utilisateur est un invité	 
-if ($form_guest->isValid()){
-// On crée l'objet Guest en fonction du formulaire transmis
-$guest->setPseudo($form_guest->getData()->getPseudo());
-$guest->setEmail($form_guest->getData()->getEmail());
-$guest->setPassword($form_guest->getData()->getPassword());
-$guest->setType($form_guest->getData()->getType());
-$guest->setVille($form_guest->getData()->getVille());
-
-// On enregistre le Guest
-$em->persist($guest);
-$em->flush();
-
-
-// On met le type d'utilisateur à invité
-$annonce->setAuteurType($em->getRepository('BoutiqueBundle:AuteurType')->findOneByid(2) );
-// On met la valeur de Auteurid en fonction du mode d'envoi ( connecté ou non ) 	
-$annonce->setAuteurid($guest->getId());
-$annonce->setIpadress($ip);
-}
-else{
-	return $this->render('BoutiqueBundle:Public:deposer.html.twig', array(  'form_annonce' 	=> $form_annonce->createView(), 
-																			'form_guest' 	=> $form_guest->createView(),
-																			'form_image' 	=> $form_image->createView(),
-																			'entete'		=> $entete  ));
-	 }
-
-}
-*/					
-
+																			   'slug' 		 => $annonce->getSlug()))));				
 		}
 	 
 		return $this->render('BoutiqueBundle:Public:deposer.html.twig', array( 'form' => $form->createView(),'entete' => $entete ));

@@ -2,11 +2,25 @@
 
 namespace Boutcaz\BoutiqueBundle\Form;
 
+use Boutcaz\BoutiqueBundle\Entity\Departement;
+
+use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormInterface;
+use Doctrine\ORM\EntityRepository;
 
 class QDAnnonceType extends AnnonceType
+{
+	private $securityContext;
+
+	public function __construct(SecurityContext $securityContext)
 	{
+	    $this->securityContext = $securityContext;
+	}
+		
 		public function buildForm(FormBuilderInterface $builder, array $options)
         {
 		// On fait appel à la méthode buildForm du parent, qui va ajouter tous les champs à $builder
@@ -55,9 +69,41 @@ class QDAnnonceType extends AnnonceType
 	            ->remove('auteurid')
 	            ->remove('date')
 	            ->remove('updated')
-	            ->remove('auteurtype')
-	            
-        ;
-        
+	            ->remove('auteurtype');  
+
+				// récupère le user et vérifie rapidement qu'il existe bien
+		$user = $this->securityContext->getToken()->getUser();
+		if (!$user) {
+			throw new \LogicException( 'Le FriendMessageFormType ne peut pas être utilisé sans utilisateur connecté!');
+		}
+		
+		$builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function(FormEvent $event) use ($user) {
+            	$form = $event->getForm();
+            	
+            	$formOptions = array(
+                    'class' => 'BoutiqueBundle:Departement',
+                    'property' => 'departement',
+                    'query_builder' => function(EntityRepository $er) use ($user) {
+                        // construit une requête personnalisée
+                        return $er->createQueryBuilder('u')->where('u.region = :region')->setParameter('region', $user->getRegion());
+                        // ou appelle une méthode d'un repository qui retourne un query builder
+                        // l'instance $er est une instance de UserRepository
+                        // retourne $er->createOrderByFullNameQueryBuilder();
+                    },
+                    'attr' => array('class' => 'annonce')
+                );
+				
+				if($user->getRegion() === NULL)
+				{
+					// crée le champ, cela équivaut à  $builder->add()
+					// nom du champ, type de champ, donnée, options
+					$form->add('departement', 'entity', $formOptions);
+				}	
+            
+            }
+		);
+		
 		}	
 	}
