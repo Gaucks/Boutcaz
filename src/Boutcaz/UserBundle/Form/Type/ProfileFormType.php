@@ -30,7 +30,7 @@ class ProfileFormType extends BaseType
 														   'property' 	   		=> 'region',
 														   'label' 		   		=> 'Region:',
 														   'group_by' 	   		=> 'departement.departement',
-														   'empty_value'   		=> 'Choisissez votre département...', 
+														   'empty_value'   		=> 'Choisissez votre Région...', 
 													       'attr'		   		=> array('class' => 'signup')
 														   ))
 				->add('type', 		'entity',    	array('class' 	   	   		=> 'BoutiqueBundle:Type',

@@ -83,8 +83,9 @@ class QDAnnonceType extends AnnonceType
             	$form = $event->getForm();
             	
             	$formOptions = array(
-                    'class' => 'BoutiqueBundle:Departement',
-                    'property' => 'departement',
+                    'class' 		=> 'BoutiqueBundle:Departement',
+                    'property' 		=> 'departement',
+                    'empty_value'   => 'Choisissez votre département...', 
                     'query_builder' => function(EntityRepository $er) use ($user) {
                         // construit une requête personnalisée
                         return $er->createQueryBuilder('u')->where('u.region = :region')->setParameter('region', $user->getRegion());
@@ -92,14 +93,37 @@ class QDAnnonceType extends AnnonceType
                         // l'instance $er est une instance de UserRepository
                         // retourne $er->createOrderByFullNameQueryBuilder();
                     },
-                    'attr' => array('class' => 'annonce')
-                );
+                    'attr' => array('class' => 'annonce'));
 				
-				if($user->getRegion() === NULL)
-				{
-					// crée le champ, cela équivaut à  $builder->add()
-					// nom du champ, type de champ, donnée, options
-					$form->add('departement', 'entity', $formOptions);
+				
+				//=====================================================
+				//! AFFICHAGE DES VILLES SI CA N'EST PAS DÉJA REMPLI
+				//=====================================================
+
+				$formOptionsVille = array(
+                    'class' 		=> 'BoutiqueBundle:Ville',
+                    'property' 		=> 'ville',
+                    'empty_value'   => 'Choisissez votre ville...', 
+                    'query_builder' => function(EntityRepository $er) use ($user) {
+                        // construit une requête personnalisée
+                        return $er->createQueryBuilder('u')->where('u.departement = :departement')->setParameter('departement', $user->getDepartement());
+                        // ou appelle une méthode d'un repository qui retourne un query builder
+                        // l'instance $er est une instance de UserRepository
+                        // retourne $er->createOrderByFullNameQueryBuilder();
+                    },
+                    'attr' => array('class' => 'annonce'));
+				
+				
+				if( $this->securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+					if($user->getDepartement() === NULL)
+					{
+						// crée le champ, cela équivaut à  $builder->add()
+						$form->add('departement', 'entity', $formOptions);
+					}
+					elseif( ( $user->getDepartement() != NULL ) AND ( $user->getVille() === NULL) ){
+						$form->add('ville', 'entity', $formOptionsVille);
+
+					}
 				}	
             
             }

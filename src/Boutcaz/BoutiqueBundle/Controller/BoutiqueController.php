@@ -18,20 +18,16 @@ class BoutiqueController extends Controller
 {
     public function indexAction()
     {
+    	
     	//Création du formulaire de recherche
-    	$form_recherche = $this->createForm(new rechercheType());
+    	$form_recherche            = $this->createForm(new rechercheType());
     	
     	//Récupération de toutes les régions limité a 9 affichage ( à modifier )
-    	$region = $this->getDoctrine()
-				       ->getRepository("BoutiqueBundle:Region")
-				       ->findBy(array(), array('id' => 'desc'), 8, 0);
-				       
-		$region2 = $this->getDoctrine()
-				       ->getRepository("BoutiqueBundle:Region")
-				       ->findBy(array(), array('id' => 'desc'), 9, 8);
-	    $region3 = $this->getDoctrine()
-				       ->getRepository("BoutiqueBundle:Region")
-				       ->findBy(array(), array('id' => 'desc'), 9, 17);
+    	$regionEntityRepository    = $this->getDoctrine()->getRepository("BoutiqueBundle:Region");
+    	
+    	$region                    = $regionEntityRepository->findBy(array(), array('id' => 'desc'), 8, 0);
+		$region2                   = $regionEntityRepository->findBy(array(), array('id' => 'desc'), 9, 8);
+	    $region3                   = $regionEntityRepository->findBy(array(), array('id' => 'desc'), 9, 17);
     	
     	return $this->render('BoutiqueBundle:Public:accueil.html.twig', array(  'recherche'=> $form_recherche->createView(), 
 														    					'regions'  => $region, 'regions2'  => $region2, 'regions3'  => $region3));
@@ -50,9 +46,9 @@ class BoutiqueController extends Controller
 		
     	$form           = $this->createForm(new QDAnnonceType($this->container->get('security.context')), $annonce);	 /* On créer le formulaire d'annonce */
 		
-		$formHandler = new AnnonceHandler($form, $request, $entityManager, $annonce, $user); // On transmet tout au AnnonceHandler
+		$formHandler 	= new AnnonceHandler($form, $request, $entityManager, $annonce, $user); // On transmet tout au AnnonceHandler
 		
-		$process = $formHandler->process(); // Validation du formulaire
+		$process 		= $formHandler->process(); // Validation du formulaire
 				
 		if($process)
 		{

@@ -47,6 +47,13 @@
 									{{ form_widget(form.departement)}}
 									{% endif %}
 									
+									{% if form.ville is defined %}
+									{# La ville  #}
+									<div class="error"=>{{ form_errors(form.ville) }}</div>
+									{{ form_label(form.ville, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+									{{ form_widget(form.ville)}}
+									{% endif %}
+									
 									{# Le categorie #}	
 									<div class="error"=>{{ form_errors(form.categorie) }}</div>
 									{{ form_label(form.categorie, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
