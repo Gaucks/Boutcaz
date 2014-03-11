@@ -21,26 +21,27 @@ class LoadVilleData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+    	$postal = '13100';
     	// Bouches du rhone
-		$marseille  	= $this->createVille('Marseille'			, $this->getReference('departement-bdr'));
-		$aix_en_pce  	= $this->createVille('Aix en Provence'		, $this->getReference('departement-bdr'));
-		$eguilles  		= $this->createVille('Eguilles'				, $this->getReference('departement-bdr'));
-		$aubagne  		= $this->createVille('Aubagne'				, $this->getReference('departement-bdr'));
-		$trets  		= $this->createVille('Trets'				, $this->getReference('departement-bdr'));
-		$gardanne  		= $this->createVille('Gardanne'				, $this->getReference('departement-bdr'));
-		$septemes  		= $this->createVille('Septemes les vallons'	, $this->getReference('departement-bdr'));
+		$marseille  	= $this->createVille('Marseille'			, $this->getReference('departement-bdr'), $postal);
+		$aix_en_pce  	= $this->createVille('Aix en Provence'		, $this->getReference('departement-bdr'), $postal);
+		$eguilles  		= $this->createVille('Eguilles'				, $this->getReference('departement-bdr'), $postal);
+		$aubagne  		= $this->createVille('Aubagne'				, $this->getReference('departement-bdr'), $postal);
+		$trets  		= $this->createVille('Trets'				, $this->getReference('departement-bdr'), $postal);
+		$gardanne  		= $this->createVille('Gardanne'				, $this->getReference('departement-bdr'), $postal);
+		$septemes  		= $this->createVille('Septemes les vallons'	, $this->getReference('departement-bdr'), $postal);
 		
 		
 		// Var
-		$st_julien 		= $this->createVille('St Julien'			, $this->getReference('departement-var'));
-		$ginasservis 	= $this->createVille('Ginasservis'			, $this->getReference('departement-var'));
-		$la_verdiere 	= $this->createVille('La verdiere'			, $this->getReference('departement-var'));
-		$vinon 			= $this->createVille('Vinon sur Verdon'		, $this->getReference('departement-var'));
+		$st_julien 		= $this->createVille('St Julien'			, $this->getReference('departement-var'), $postal);
+		$ginasservis 	= $this->createVille('Ginasservis'			, $this->getReference('departement-var'), $postal);
+		$la_verdiere 	= $this->createVille('La verdiere'			, $this->getReference('departement-var'), $postal);
+		$vinon 			= $this->createVille('Vinon sur Verdon'		, $this->getReference('departement-var'), $postal);
 		
 		// Hautes Alpes
-		$manosque 		= $this->createVille('Manosque'				, $this->getReference('departement-hlp'));
-		$volx 			= $this->createVille('Volx'					, $this->getReference('departement-hlp'));
-		$st_tulle 		= $this->createVille('Sainte Tulle'			, $this->getReference('departement-hlp'));
+		$manosque 		= $this->createVille('Manosque'				, $this->getReference('departement-hlp'), $postal);
+		$volx 			= $this->createVille('Volx'					, $this->getReference('departement-hlp'), $postal);
+		$st_tulle 		= $this->createVille('Sainte Tulle'			, $this->getReference('departement-hlp'), $postal);
 		
 		
 		// Persist des objets
@@ -63,10 +64,11 @@ class LoadVilleData extends AbstractFixture implements OrderedFixtureInterface
 	}	
 	
 	// Fonction de création golbale
-	private function createVille($nom, $num ) {
+	private function createVille($nom, $num, $postal ) {
 		$ville = new Ville();
 		$ville->setVille($nom);
 		$ville->setDepartement($num);
+		$ville->setPostal($postal);
  
 		return $ville;
 	}		

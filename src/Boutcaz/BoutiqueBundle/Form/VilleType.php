@@ -27,7 +27,9 @@ class VilleType extends AbstractType
                 ->add('ville', 			'entity',  array(  'empty_value' => 'Choisissez votre ville...',
 				            							   'class'		 => 'BoutiqueBundle:Ville',
 				            							   'property'    => 'Ville',
-				            							   'label' 		 => false));
+				            							   'label' 		 => false))
+				->add('postal');
+				            							   
 			            									  
     		
     }

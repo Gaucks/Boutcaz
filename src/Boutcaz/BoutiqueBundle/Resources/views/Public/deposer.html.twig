@@ -86,14 +86,20 @@
 									#}
 									
 							</div> {# Fin du Conteneur pour les images #}
-							
-						<div id="dep_submit">
-							<input type="submit" value="Créer mon annonce maintenant !" id="submit" />
-						</div>
+				<h3 class="annonce_etape">6 - Coordonnées </h3>
+				
+	<div id="log-guest">
+	
+				{{ render(controller("BoutiqueBundle:Guest:register")) }}
+	</div>						
+				<div id="dep_submit">
+					<input type="submit" value="Créer mon annonce maintenant !" id="submit" />
+				</div>
 				
 				
 				{{ form_rest(form) }}		
 				{{ form_end(form) }}
+				
 				</form>
 				
 				
@@ -131,6 +137,7 @@
 				</div>
 
 		<div class="clear"></div>
+		
 		</div> {# Fin du conteneur de depose #}	
 		
 	</div>{# Fin du conteneur global #}	

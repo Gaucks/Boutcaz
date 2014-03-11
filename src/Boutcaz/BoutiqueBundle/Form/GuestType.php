@@ -15,16 +15,14 @@ class GuestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo')
+            ->add('username')
             ->add('email')
             ->add('password')
             ->add('date')
             ->add('phone')
             ->add('showphone')
-            /*
-			->add('ville')
+            ->add('ville')
             ->add('type')
-			*/
         ;
     }
     
@@ -43,6 +41,6 @@ class GuestType extends AbstractType
      */
     public function getName()
     {
-        return 'Boutcaz_BoutiqueBundle_guest';
+        return 'boutcaz_boutiquebundle_guest';
     }
 }

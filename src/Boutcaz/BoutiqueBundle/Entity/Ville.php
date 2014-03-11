@@ -40,6 +40,13 @@ class Ville
      * @ORM\Column(name="Ville", type="string", length=255)
      */
     private $ville;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="postal", type="integer", length=5)
+     */
+    private $postal;
 
 
     /**
@@ -119,5 +126,28 @@ class Ville
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set postal
+     *
+     * @param integer $postal
+     * @return Ville
+     */
+    public function setPostal($postal)
+    {
+        $this->postal = $postal;
+
+        return $this;
+    }
+
+    /**
+     * Get postal
+     *
+     * @return integer 
+     */
+    public function getPostal()
+    {
+        return $this->postal;
     }
 }

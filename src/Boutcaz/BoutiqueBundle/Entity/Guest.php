@@ -19,6 +19,18 @@ class Guest
     */
 	private $ville;
 	
+	// DANS QUEL Region IL SE SITUE
+    /**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Region")
+    */
+	private $region;
+	
+	// DANS QUEL Departement IL SE SITUE
+    /**
+    * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Departement")
+    */
+	private $departement;
+	
 	// PROFESSIONNEL OU PARTICULIER
 	/**
     * @ORM\ManyToOne(targetEntity="Boutcaz\BoutiqueBundle\Entity\Type")
@@ -37,10 +49,10 @@ class Guest
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      * @Assert\Regex(pattern = "/^[a-zA-Z0-9-]+$/")
      */
-    private $pseudo;
+    private $username;
 
     /**
      * @var string
@@ -78,14 +90,12 @@ class Guest
      * @ORM\Column(name="showphone", type="boolean")
      */
     private $showphone;
-
 	
 	public function __construct()
 	{
     	$this->date  = new \DateTime();
     	$this->showphone = false;
 	}
-
 
     /**
      * Get id
@@ -98,26 +108,26 @@ class Guest
     }
 
     /**
-     * Set pseudo
+     * Set username
      *
-     * @param string $pseudo
+     * @param string $username
      * @return Guest
      */
-    public function setPseudo($pseudo)
+    public function setUsername($username)
     {
-        $this->pseudo = $pseudo;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get pseudo
+     * Get username
      *
      * @return string 
      */
-    public function getPseudo()
+    public function getUsername()
     {
-        return $this->pseudo;
+        return $this->username;
     }
 
     /**
@@ -281,4 +291,49 @@ class Guest
         return $this->type;
     }
 
+    /**
+     * Set region
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Region $region
+     * @return Guest
+     */
+    public function setRegion(\Boutcaz\BoutiqueBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \Boutcaz\BoutiqueBundle\Entity\Departement $departement
+     * @return Guest
+     */
+    public function setDepartement(\Boutcaz\BoutiqueBundle\Entity\Departement $departement = null)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Boutcaz\BoutiqueBundle\Entity\Departement 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
 }

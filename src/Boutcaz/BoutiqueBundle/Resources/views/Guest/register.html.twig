@@ -1,0 +1,51 @@
+
+{{ form_start(form) }}
+	
+	{# Le nom d'utilisateur et le mail #}
+	<div class="log-guest_content">	
+		<div class="error"=>{{ form_errors(form.username) }}</div>
+		<div class="error"=>{{ form_errors(form.email) }}</div>
+		
+		{{ form_label(form.username, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+		{{ form_widget(form.username)}}
+		{{ form_widget(form.email)}}
+	
+	</div>
+	
+	<div class="clear"></div>
+	
+	{# Le mot de passe #}
+	<div class="log-guest_content">
+		<div class="error"=>{{ form_errors(form.password.first) }}</div>
+		<div class="error"=>{{ form_errors(form.password.second) }}</div>
+		
+		{{ form_label(form.password.first, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+		{{ form_widget(form.password.first)}}
+		{{ form_widget(form.password.second)}}
+		
+	</div>
+
+{# La région #}
+<div class="log-guest_content">
+	
+	<div class="error"=>{{ form_errors(form.region) }}</div>
+	{{ form_label(form.region, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+	{{ form_widget(form.region)}}
+	
+	<div class="error"=>{{ form_errors(form.departement) }}</div>
+	{{ form_label(form.departement, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+	{{ form_widget(form.departement)}}
+	
+	<div class="error"=>{{ form_errors(form.ville) }}</div>
+	{{ form_label(form.ville, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+	{{ form_widget(form.ville)}}
+
+	{# Le type #}	
+	<div class="error"=>{{ form_errors(form.type) }}</div>
+	{{ form_label(form.type, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+	{{ form_widget(form.type)}}
+</div>
+		
+{{ form_rest(form) }}
+
+{{ form_end(form) }}

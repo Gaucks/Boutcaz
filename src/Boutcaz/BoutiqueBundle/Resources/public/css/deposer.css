@@ -238,11 +238,61 @@
 			margin-top: 6px;
 			text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 	}	
-	
-	
-	
-	
-	
+
+.log-guest_content{}
+
+.log-guest-right{ float:right } 
+.log-guest-left{ float: left }
+
+
+.log-guest_content input[type="text"].annonce_txt{
+					width: 220px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: inline-block;
+				}
+
+.log-guest_content input[type="email"].annonce_txt{
+					width: 220px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: inline-block;
+				}
+
+.log-guest_content input[type="password"].annonce_txt{
+					width: 220px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: inline-block;
+				}
+								
+.log-guest_content select.annonce_txt{
+					margin-bottom: 5px;
+					width: 240px;
+					height: 30px;
+					border: 1px solid #c5cacc;
+					display: inline-block;
+				}
+				
+.log-guest_content label.label{
+					float:left;
+					display: block;
+					margin: 5px 0 2px 10px;
+					width: 150px;
+				}
+				
 	
 	
 /* Partie de droite du site  */
@@ -317,8 +367,6 @@
 	z-index: 1;  /*s'affichera sous le rectangle  */
 	margin-bottom: 20px;
 }
-
-
 /* Fin Partie pour afficher un ruban sur le titre */		
 		
 	
