@@ -138,7 +138,12 @@ class BoutiqueController extends Controller
 	            $this->get('session')->getFlashBag()
 	            					 ->add('notice','Votre annonces à été enregistré, consultez votre boite mail pour la confirmé!');
 	            	
-				return $this->redirect(($this->generateUrl('deposer_homepage')));				
+				return $this->redirect($this->generateUrl('show_homepage', array('region' 		=> $annonce->getRegion()->getSlug(),
+															  'departement' => $annonce->getDepartement()->getSlug(),
+															  'ville'		=> $annonce->getVille()->getSlug(),
+															  'id'			=> $annonce->getId(),
+															  'slug'		=> $annonce->getSlug()
+															  )));				
 			}
 			
 			return $this->render('BoutiqueBundle:Guest:deposer.html.twig', array( 'form' 	=> $form->createView(),
