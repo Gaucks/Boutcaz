@@ -40,20 +40,6 @@
 					
 							<div id="dep_main"> {# Conteneur pour les catégories #}	
 									
-									{% if form.departement is defined %}
-									{# Le département  #}
-									<div class="error"=>{{ form_errors(form.departement) }}</div>
-									{{ form_label(form.departement, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form.departement)}}
-									{% endif %}
-									
-									{% if form.ville is defined %}
-									{# La ville  #}
-									<div class="error"=>{{ form_errors(form.ville) }}</div>
-									{{ form_label(form.ville, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
-									{{ form_widget(form.ville)}}
-									{% endif %}
-									
 									{# Le categorie #}	
 									<div class="error"=>{{ form_errors(form.categorie) }}</div>
 									{{ form_label(form.categorie, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
@@ -86,7 +72,49 @@
 									#}
 									
 							</div> {# Fin du Conteneur pour les images #}
+							
+			<h3 class="annonce_etape">6 - Coordonnées </h3>
+
+			<div id="log-guest">
+		
+				{# Le nom d'utilisateur et le mail #}
+				<div class="log-guest_content">	
+					<div class="error"=>{{ form_errors(form.username) }}</div>
+					<div class="error"=>{{ form_errors(form.email) }}</div>
 					
+					{{ form_label(form.username, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+					{{ form_widget(form.username)}}
+					{{ form_widget(form.email)}}
+				
+				</div>
+				
+				<div class="clear"></div>
+				
+				{# Le mot de passe #}
+				<div class="log-guest_content">
+					<div class="error"=>{{ form_errors(form.password.first) }}</div>
+					<div class="error"=>{{ form_errors(form.password.second) }}</div>
+					
+					{{ form_label(form.password.first, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+					{{ form_widget(form.password.first)}}
+					{{ form_widget(form.password.second)}}
+					
+				</div>
+				
+				{# La région #}
+				<div class="log-guest_content">
+				
+				<div class="error"=>{{ form_errors(form.postal) }}</div>
+				{{ form_label(form.postal, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+				{{ form_widget(form.postal)}}
+				
+				{# Le type #}	
+				<div class="error"=>{{ form_errors(form.type) }}</div>
+				{{ form_label(form.type, label|default(null), { 'label_attr': { 'class': 'label' } }) }}
+				{{ form_widget(form.type)}}
+				</div>
+		
+		</div>					
 				<div id="dep_submit">
 					<input type="submit" value="Créer mon annonce maintenant !" id="submit" />
 				</div>

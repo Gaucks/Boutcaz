@@ -2,6 +2,16 @@ boutique_homepage:
     pattern:  /
     defaults: { _controller: BoutiqueBundle:Boutique:index }
 
+recherche_check:
+    pattern:  /recherche_check
+    defaults: { _controller: BoutiqueBundle:Boutique:rechercheCheck }
+    requirements:
+        method: POST
+
+recherche_show:
+    pattern:  /recherche/{recherche}
+    defaults: { _controller: BoutiqueBundle:Boutique:rechercheShow }
+    
 region_homepage:
     pattern:  /region/{slug}
     defaults: { _controller: BoutiqueBundle:Boutique:region }

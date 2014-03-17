@@ -23,6 +23,32 @@ class AnnonceRepository extends EntityRepository
                    
                    return $qb->getQuery()->getResult();
 	}
+	
+	public function countResult($value)
+	{
+		return $this->createQueryBuilder('a')
+					->select('count(a)')
+					->where('a.region = :region' )
+					->setParameter('region', $value)
+					->getQuery()
+					->getSingleScalarResult();
+	}
+	
+	public function findAnnonces($value)
+	{
+		return $this->createQueryBuilder('a')
+					->where('a.titre LIKE :value')
+					->OrWhere('a.description LIKE :value')
+					->setParameter('value', '%'.$value.'%')
+					->getQuery()
+					->getResult();
+	}
+	
+	//====================================================================================
+	//! Fonction pour retrouver toutes les annonces des membres et des Invités réunies
+	//====================================================================================
+	
+
 
 	
 }

@@ -65,6 +65,7 @@ class QDAnnonceType extends AnnonceType
 																	   					 'class' => 'radio') 
 															 )
 					  )
+			    ->remove('postal')
 				->add('image',  new QDImageType)
 	            ->remove('auteurid')
 	            ->remove('date')

@@ -1,20 +1,21 @@
 {% block navigation %}
 <fieldset id="recherche">
-		    			
-		    			<label class="recherche">Recherche</label>
-		    			<input type="text" class="recherche" placeholder="Ex: Citroen C4, Smartphone etc..."/>
-		    			
-		    			<label class="recherche">Categorie</label>
-		    			<select class="recherche">
-		    				<option>Toutes les catéories</option>
-		    			</select>
-		    			
-		    			<label class="recherche">Trier par </label>
-		    			<select class="option">
-		    				<option>Date</option>
-		    				<option>Tarif</option>
-		    			</select>
-		    			<input type="submit" class="submit" value="Trouver" />
+		    			<form action="{{ path('recherche_check')}}" method="POST" />
+			    			<label class="recherche">Recherche</label>
+			    			<input type="text" name='recherche' class="recherche" placeholder="Ex: Citroen C4, Smartphone etc..."/>
+			    			
+			    			<label class="recherche">Categorie</label>
+			    			<select class="recherche">
+			    				<option>Toutes les catéories</option>
+			    			</select>
+			    			
+			    			<label class="recherche">Trier par </label>
+			    			<select class="option">
+			    				<option>Date</option>
+			    				<option>Tarif</option>
+			    			</select>
+			    			<input type="submit" class="submit" value="Trouver" />
+						</form>
 </fieldset>
 
 {% endblock navigation %}

@@ -8,17 +8,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * The AnnonceHandler.
+ * The GuestAnnonceHandler.
  * Use for manage your form submitions
  *
  */
-class AnnonceHandler
+class GuestAnnonceHandler
 {
  	
  	protected $request;
     protected $form;
     protected $ip;
-    protected $user;
     protected $annonce;
     protected $entityManager;
     protected $session;
@@ -33,14 +32,13 @@ class AnnonceHandler
      * Mailer $mailer A ajouter si on veut envoyer un mail , à mettre dans le constructeur
      */
      
-    public function __construct(Form $form, Request $request, $entityManager, $annonce, $user )
+    public function __construct(Form $form, Request $request, $entityManager, $annonce )
     {
         $this->form             = $form;
         $this->request          = $request;
         $this->annonce          = $annonce;
         $this->ip               = $this->request->server->get('REMOTE_ADDR');
         $this->entityManager    = $entityManager;
-        $this->user             = $user;
         $this->session          = new Session;
         // $this->mailer = $mailer; -> Si on veut envoyer un mail
     }
@@ -55,7 +53,13 @@ class AnnonceHandler
 			
 			if ($this->form->isValid()) {
 				
-				return $this->saveAnnonce();
+				if($this->saveAnnonce())
+				{
+					return true;
+				}
+				
+				$this->session->getFlashBag()->add('notice_error','Votre annonce comporte une ou des erreurs, veuillez modifier les champs indiqués.');
+				
 			}
 			else
 			{
@@ -69,7 +73,7 @@ class AnnonceHandler
 		
 		return false;
     }
-
+	
     private function onSuccess()
     {
 	    /* -> Si on veut envoyer un mail
@@ -85,22 +89,32 @@ class AnnonceHandler
     }
     
     private function saveAnnonce()
-	{		
-			$this->annonce->setIpadress($this->ip)
-						  ->setDepartement($this->user->getDepartement())
-						  ->setRegion($this->user->getRegion())
-						  ->setVille($this->user->getVille())
-						  ->setUser($this->user)
-						  ->getImage()->upload();
-
+	{
+		//===============================================================
+		//! On retrouve à partir du code postal entré par l'utilisateur : 
+		//  			- la région, 
+		//  			- le département,
+		//  			- la ville
+		//===============================================================
+		$ville 		 = $this->entityManager->getRepository('BoutiqueBundle:ville')
+									   		->findOneByPostal($this->annonce->getPostal());	
+		$departement = $this->entityManager->getRepository('BoutiqueBundle:departement')
+									   ->findOneById($ville->getDepartement()->getId());
+		$region 	 = $this->entityManager->getRepository('BoutiqueBundle:region')
+									   ->findOneById($departement->getRegion()->getId());
+		
+		// On enregistre manuellement toute les infos complémentaires	
+		$this->annonce->setIpadress($this->ip)
+					  ->setDepartement($departement)
+					  ->setRegion($region)
+					  ->setVille($ville)
+					  ->getImage()->upload();
+		
+		// Enregistrement dans la base de données
 		$this->entityManager->persist($this->annonce);
 		$this->entityManager->flush();
 		
 		return true;
-	}
-	
-	private function saveBdd()
-	{	
 		
 	}
 

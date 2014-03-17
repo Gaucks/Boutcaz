@@ -1,7 +1,12 @@
 parameters:
 #    boutique.example.class: Boutcaz\BoutiqueBundle\Example
 
+# src/Sdz/BlogBundle/Resources/config/services.yml
+
 services:
-#    boutique.example:
-#        class: %boutique.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    boutcazboutique.validator.checkpostal:                             # Le nom du service
+        class: Boutcaz\BoutiqueBundle\Validator\CheckPostalValidator   # La classe du service, ici notre validateur déjà créé
+        arguments: [@request, @doctrine.orm.entity_manager]  # Les données qu'on injecte au service : la requête et l'EntityManager
+        scope: request                                       # Comme on injecte la requête, on doit préciser ce scope
+        tags:
+            - { name: validator.constraint_validator, alias: boutcazboutique_checkpostal }  # C'est avec l'alias qu'on retrouvera le service

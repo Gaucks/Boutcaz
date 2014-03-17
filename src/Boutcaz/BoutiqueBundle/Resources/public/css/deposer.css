@@ -266,7 +266,17 @@
 					margin-bottom: 5px;
 					display: inline-block;
 				}
-
+.log-guest_content input[type="text"].annonce_postal{
+					width: 70px;
+					height: 20px;
+					padding: 5px 10px;
+					background: #f0f0f0;
+					border: 1px solid #c5cacc;
+					border-radius: 4px;
+					margin-bottom: 5px;
+					display: inline-block;
+				}
+				
 .log-guest_content input[type="password"].annonce_txt{
 					width: 220px;
 					height: 20px;

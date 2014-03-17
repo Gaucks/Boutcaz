@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GuestType extends AbstractType
+class GuestAnnonceType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,12 +15,24 @@ class GuestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('titre')
+            ->add('slug')
+            ->add('description')
+            ->add('tarif')
+            ->add('date')
+            ->add('updated')
+            ->add('published')
+            ->add('ipadress')
             ->add('username')
             ->add('email')
             ->add('password')
-            ->add('date')
             ->add('phone')
             ->add('showphone')
+            ->add('image')
+            ->add('categorie')
+            ->add('proposition')
+            ->add('region')
+            ->add('departement')
             ->add('ville')
             ->add('type')
         ;
@@ -32,7 +44,7 @@ class GuestType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Boutcaz\BoutiqueBundle\Entity\Guest'
+            'data_class' => 'Boutcaz\BoutiqueBundle\Entity\GuestAnnonce'
         ));
     }
 
@@ -41,6 +53,6 @@ class GuestType extends AbstractType
      */
     public function getName()
     {
-        return 'boutcaz_boutiquebundle_guest';
+        return 'boutcaz_boutiquebundle_guestannonce';
     }
 }

@@ -29,7 +29,7 @@ class LoadVilleData extends AbstractFixture implements OrderedFixtureInterface
 		$aubagne  		= $this->createVille('Aubagne'				, $this->getReference('departement-bdr'), $postal);
 		$trets  		= $this->createVille('Trets'				, $this->getReference('departement-bdr'), $postal);
 		$gardanne  		= $this->createVille('Gardanne'				, $this->getReference('departement-bdr'), $postal);
-		$septemes  		= $this->createVille('Septemes les vallons'	, $this->getReference('departement-bdr'), $postal);
+		$septemes  		= $this->createVille('Septemes les vallons'	, $this->getReference('departement-bdr'), '83560');
 		
 		
 		// Var
