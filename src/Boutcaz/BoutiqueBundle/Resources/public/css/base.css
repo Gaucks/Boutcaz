@@ -24,6 +24,8 @@ div#notice h3#message{ color: white; line-height: 1.5em; text-shadow: 1px 1px 2p
 div#notice_error{ background: #e54f47; text-align: center; padding: 7px 0; position: absolute; width: 100%; top: 0 }
 div#notice_error h3#message{ color: white; line-height: 1.5em; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
 
+div#content_error{ background: #fff; border: 1px solid #ccc; border-radius: 7px; width: 100%; padding: 20px; }
+div#content_error h3#error_title{ margin-bottom: 10px;}
 input::-webkit-input-placeholder {
 	font-family: georgia;
 	font-style: italic;

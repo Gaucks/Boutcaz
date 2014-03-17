@@ -196,13 +196,21 @@ class BoutiqueController extends Controller
         																			  'totalBoutiques' 	=> $totalBoutiques ));
     }
     
-    public function showAction($region, $departement, $ville, Annonce $id, $slug)//Annonce $anonce à rajouter
+    public function showAction($region, $departement, $ville, $id, $slug)//Annonce $anonce à rajouter
     {
-    	$annonce = $this->getDoctrine()->getManager()->getRepository('BoutiqueBundle:Annonce')->findById($id);
+    	$annonce 		= $this->getDoctrine()->getManager()->getRepository('BoutiqueBundle:Annonce')->findById($id);
     	
     	if($annonce == NULL )
     	{
-	     	throw $this->createNotFoundException('Unable to find entity.');
+	     	$guestAnnonce  = $this->getDoctrine()->getManager()->getRepository('BoutiqueBundle:GuestAnnonce')->findById($id);
+	     	
+	     	if($guestAnnonce == NULL )
+		 	{
+		 		return $this->render('BoutiqueBundle:Errors:no_annonce_found.html.twig');
+		 	}
+		 	
+		 	return $this->render('BoutiqueBundle:Guest:show_annonce.html.twig', array('annonce' => $guestAnnonce ));
+		 	
     	}
     	
         return $this->render('BoutiqueBundle:Public:show_annonce.html.twig', array('annonce' => $annonce ));

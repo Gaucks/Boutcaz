@@ -1,0 +1,161 @@
+{% extends('::base.html.twig') %}
+
+{% block body %}
+
+	{% for a in annonce %}
+	<div id="content_box">
+		<div id="sponsored">
+			
+				<div class="show_box">
+					
+						<div class="show_box_img">
+						
+							<img src="{{ asset('bundles/Boutique/images/icones/ribbon-blue_ltl.png') }}" class="ribbon_ltl" alt="ribbon" />
+							
+						</div>
+						
+						<div class="show_box_annonce">
+							<h3 class="title">{{ a.titre }}</h3>
+							<span id="tarif">Tarif : {% if a.tarif != NULL %} {{ a.tarif }} euros {% else %} Inconnu {% endif %}</span>
+
+							<ul class="sp_top_infos">
+								<li class="sp_top_info"><p class="infos">Par</p> {{ a.username }}</li>
+								<li class="sp_top_info"><p class="infos">Le </p> {{ a.date|date('d/m/Y') }}</li>
+								<li class="sp_top_info"><p class="infos">Dans</p> {{ a.categorie.categorie }}</li>
+							</ul>
+							<p class="location">A {{ a.ville.ville }} dans le ({{ a.departement.numero }} )</p>
+						
+						
+						</div>
+				
+				
+				
+{# BLOC DE DROITE #}				
+				<div id="show_annonce_right">
+					<div id="uploaded_picture">
+					
+						<div id="big_picture">
+							{% if a.image.url != NULL %}
+								<img src="{{ asset('uploads/img/' ~ a.image.url) }}" id="picture_big" alt="Image de l'annonce" />
+							{% else %}
+								<img src="{{ asset('uploads/img/default.png') }}" id="picture_big" alt="Image de l'annonce" />
+							{% endif %}
+						</div>
+						<ul id="picture">
+							<li class="picture"><img src="{{ asset('uploads/img/default.png') }}" class="picture" alt="Nombre d'annonce" /></li>
+							<li class="picture"><img src="{{ asset('uploads/img/default.png') }}" class="picture" alt="Nombre d'annonce" /></li>
+							<li class="picture"><img src="{{ asset('uploads/img/default.png') }}" class="picture" alt="Nombre d'annonce" /></li>
+						</ul>
+					</div>
+				</div>
+{# FIN BLOC DE DROITE #}		
+
+	
+{# BLOC DE GAUCHE #}
+				<div id="show_annonce_left">
+				
+					<div id="description">
+
+							<p class="description">{{ a.description }}
+							</p>
+					</div>
+							
+							{# Commentaires #}
+							
+								<div id="commentaires">
+									<div id="commentaire_input">
+										<h3 id="com">Une question, un commentaire ?</h3>
+										<input type="text" class="comm" placeholder="Appuyez sur entrer pour valider" />
+									</div>
+									
+										<div class="commentaire_box">
+											
+											<div class="commentaire_avatar">
+												<img src="{{ asset('bundles/Boutique/images/no_avatar.png') }}" class="avatar" alt="no avatar" />
+											</div>
+											
+											<div class="commentaire_txt">
+												<h4 class="auteur">Pseudo</h4>
+												<p class="date">21/12/14 à 21h32</p>
+												<p class="description">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+												</p>
+											</div>
+											
+										</div>
+										
+										<div class="commentaire_box">
+											
+											<div class="commentaire_avatar">
+												<img src="{{ asset('bundles/Boutique/images/no_avatar.png') }}" class="avatar" alt="no avatar" />
+											</div>
+											
+											<div class="commentaire_txt">
+												<h4 class="auteur">Pseudo</h4>
+												<p class="date">21/12/14 à 21h32</p>
+												<p class="description">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+												</p>
+											</div>
+											
+										</div>
+										
+										<div class="commentaire_box">
+											
+											<div class="commentaire_avatar">
+												<img src="{{ asset('bundles/Boutique/images/no_avatar.png') }}" class="avatar" alt="no avatar" />
+											</div>
+											
+											<div class="commentaire_txt">
+												<h4 class="auteur">Pseudo</h4>
+												<p class="date">21/12/14 à 21h32</p>
+												<p class="description">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+												</p>
+											</div>
+											
+										</div>
+										
+										<div class="commentaire_box">
+											
+											<div class="commentaire_avatar">
+												<img src="{{ asset('bundles/Boutique/images/no_avatar.png') }}" class="avatar" alt="no avatar" />
+											</div>
+											
+											<div class="commentaire_txt">
+												<h4 class="auteur">Pseudo</h4>
+												<p class="date">21/12/14 à 21h32</p>
+												<p class="description">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+												</p>
+											</div>
+											
+										</div>
+											
+								</div>
+								
+							{# FIN DES Commentaires #}
+					
+							
+				</div>									
+{# FIN DE BLOC DE GAUCHE #}							
+			
+
+					<div class="clear"> </div>
+					
+					<div class="show_box_annonce_bottom">
+						<ul class="show_box_annonce_bottom_ul">
+							<li class="show_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/annonce_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 366</li>
+							<li class="show_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/boutique_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 366</li></li>
+							<li class="show_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/user_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 366</li></li>
+							<li class="show_box_annonce_bottom_li"><img src="{{ asset('bundles/Boutique/images/icones/annonce_ico.png') }}" class="ico" alt="Nombre d'annonce" /> 366</li></li>
+						</ul>
+					 </div>
+					 
+					 <div class="clear"> </div>
+				
+				</div>
+				
+	</div>
+{% endfor %}
+{% endblock %}

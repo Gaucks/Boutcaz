@@ -1,0 +1,14 @@
+{% extends('::base.html.twig') %}
+
+
+{% block body %}
+	
+	<div id="content_box">
+		<div id="content_error">
+			<h3 id="error_title">Désolé, cette annonce n'éxiste pas.</h3>
+			<a href="{{ path('boutique_homepage')}}" >>> Retour à l'accueil du site<a>
+		</div>
+	</div>
+
+
+{% endblock %}
