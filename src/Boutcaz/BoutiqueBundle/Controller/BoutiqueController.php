@@ -113,7 +113,7 @@ class BoutiqueController extends Controller
 			}
 			
 			return $this->render('BoutiqueBundle:Public:deposer.html.twig', array( 'form' 	=> $form->createView(),
-																			   'entete' => $entete ));	
+																			   'entete' => 'Lolilol' ));	
 			
 		}
 		
